@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="manage-inventory1" path="/manage-inventory1" reloadable="true">
+	<Resource auth="Container" driverClassName="org.postgresql.Driver"
+		maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/manage-inventory1"
+		password="${manage-inventory1.password}" removeAbandoned="true" testWhileIdle="true"
+		timeBetweenEvictionRunsMillis="60000" type="javax.sql.DataSource"
+		url="${manage-inventory1.url}"
+		username="${manage-inventory1.username}" validationQuery="select version()" />
+
+</Context>

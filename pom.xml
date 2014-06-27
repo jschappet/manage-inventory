@@ -1,0 +1,325 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.schappet.</groupId>
+	<artifactId>manage-inventory</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>manage-inventory</name>
+
+
+	<properties>
+		<jettyVersion>7.2.0.v20101020</jettyVersion>
+	</properties>
+
+
+	<dependencies>
+		<!-- <dependency> <groupId>com.schappet.inventory</groupId> <artifactId>manage-inventory1-base</artifactId> 
+			<version>0.0.1-SNAPSHOT</version> <scope>compile</scope> </dependency> -->
+		<dependency>
+			<groupId>edu.uiowa.icts.spring</groupId>
+			<artifactId>spring-utils</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>edu.uiowa.icts.taglib</groupId> -->
+<!-- 			<artifactId>DemographicsTagLib</artifactId> -->
+<!-- 			<version>1.0.0</version> -->
+<!-- 		</dependency> -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.14</version>
+			<type>jar</type>
+			<exclusions>
+				<exclusion>
+					<artifactId>jmxtools</artifactId>
+					<groupId>com.sun.jdmk</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jmxri</artifactId>
+					<groupId>com.sun.jmx</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>1.8.4</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-api</artifactId>
+			<version>2.1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-jsp</artifactId>
+			<version>2.1.4</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-servlet</artifactId>
+			<version>2.1.4</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-core</artifactId>
+			<version>2.1.4</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-compat</artifactId>
+			<version>2.1.4</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-portlet</artifactId>
+			<version>2.1.4</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.5.10</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.10</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.1.1</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.0.2.GA</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>8.4-702.jdbc4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>${jettyVersion}</version>
+		</dependency>
+
+
+	</dependencies>
+
+
+
+
+
+
+
+
+
+	<build>
+		<finalName>manage-inventory</finalName>
+		<plugins>
+			<plugin>
+				<!-- This plugin is needed for the servlet example -->
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jettyVersion}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>com.schappet.util.LaunchWebApp</mainClass>
+				</configuration>
+			</plugin>
+				<plugin>
+					<groupId>edu.uiowa.icts.plugin</groupId>
+					<artifactId>protogen-plugin</artifactId>
+					<version>1.0.1</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>WebApp</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+			</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>BuildDatabase</id>
+			<build>
+				<resources>
+					<resource>
+						<directory>src/non-packaged-resources/dbchanges</directory>
+					</resource>
+				</resources>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>sql-maven-plugin</artifactId>
+						<version>1.4</version>
+						<!-- common configuration shared by all executions -->
+						<configuration>
+							<driver>${db.driver}</driver>
+							<url>${db.liquibase.url}</url>
+							<username>${db.username}</username>
+							<password>${db.passwd}</password>
+						</configuration>
+						<executions>
+							<execution>
+								<id>create-schema</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<onError>continue</onError>
+									<sqlCommand>CREATE SCHEMA ${db.schema}</sqlCommand>
+								</configuration>
+							</execution>
+							<execution>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>postgresql</groupId>
+								<artifactId>postgresql</artifactId>
+								<version>9.0-801.jdbc4</version>
+							</dependency>
+							<dependency>
+								<groupId>org.hsqldb</groupId>
+								<artifactId>hsqldb</artifactId>
+								<version>2.0.0</version>
+								<type>jar</type>
+								<scope>compile</scope>
+							</dependency>
+							<dependency>
+								<groupId>mysql</groupId>
+								<artifactId>mysql-connector-java</artifactId>
+								<version>5.1.14</version>
+								<type>jar</type>
+								<scope>compile</scope>
+							</dependency>
+						</dependencies>
+					</plugin>
+					<plugin>
+						<groupId>org.liquibase</groupId>
+						<artifactId>liquibase-plugin</artifactId>
+						<version>1.9.5.0</version>
+						<executions>
+							<execution>
+								<id>liquibase-run</id>
+								<phase>process-resources</phase>
+								<configuration>
+									<changeLogFile>${db.changelog.file}</changeLogFile>
+									<driver>${db.driver}</driver>
+									<url>${db.liquibase.url}</url>
+									<username>${db.username}</username>
+									<password>${db.passwd}</password>
+									<defaultSchemaName>${db.schema}</defaultSchemaName>
+									<dropFirst>false</dropFirst>
+									<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+								</configuration>
+								<goals>
+									<goal>update</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>properties-maven-plugin</artifactId>
+						<version>1.0-alpha-2</version>
+						<executions>
+							<execution>
+								<phase>initialize</phase>
+								<goals>
+									<goal>read-project-properties</goal>
+								</goals>
+								<configuration>
+									<quiet>true</quiet>
+									<files>
+										<file>src/non-packaged-resources/database-postgres.properties</file>
+										<!-- LAST FILE WINS -->
+										<file>${env.HOME}/config/${project.artifactId}.properties</file>
+									</files>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+	<packaging>war</packaging>
+</project>

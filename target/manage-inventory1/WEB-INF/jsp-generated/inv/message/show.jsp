@@ -1,0 +1,61 @@
+<%@ include file="/WEB-INF/include.jsp"  %>
+
+<h2>Message</h2>
+<h2> ${message.messageId} </h2>
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>MessageId</th>
+        <td>
+            ${message.messageId}
+        </td>
+    </tr>
+    <tr>
+        <th>MessageName</th>
+        <td>
+            ${message.messageName}
+        </td>
+    </tr>
+    <tr>
+        <th>MessageType</th>
+        <td>
+            ${message.messageType}
+        </td>
+    </tr>
+    <tr>
+        <th>Version</th>
+        <td>
+            ${message.version}
+        </td>
+    </tr>
+    <tr>
+        <th>MessageText</th>
+        <td>
+            ${message.messageText}
+        </td>
+    </tr>
+    <tr>
+        <th>IrbApproval</th>
+        <td>
+            ${message.irbApproval}
+        </td>
+    </tr>
+    <tr>
+        <th>IrbApprovalStartDate</th>
+        <td>
+            ${message.irbApprovalStartDate}
+        </td>
+    </tr>
+    <tr>
+        <th>IrbApprovalEndDate</th>
+        <td>
+            ${message.irbApprovalEndDate}
+        </td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>
+            ${message.description}
+        </td>
+    </tr>
+</table>
