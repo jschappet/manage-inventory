@@ -39,7 +39,7 @@
 	<bean id="logoutHandler" class="edu.uiowa.icts.authentication.LogoutHandle"/>
 
  	<import resource="view-context.xml" />
-	<import resource="hsql-context.xml" />
+	<import resource="postgres-context.xml" />
  	<import resource="switchUser.xml" />
  	
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
