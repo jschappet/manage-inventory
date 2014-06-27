@@ -19,10 +19,10 @@
 	<bean id="createSchema" class="edu.uiowa.icts.spring.HsqlCreateSchema" init-method="create">
 		<property name="schemas">
 			<list>
-				<value>manage-inventory1</value>
+				<value>manage-inventory</value>
 			</list>
 		</property>
-		<property name="url"><value>jdbc:hsqldb:file:manage-inventory1db</value></property>
+		<property name="url"><value>jdbc:hsqldb:file:manage-inventorydb</value></property>
 	</bean>
 
 	<bean depends-on="createSchema" id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -38,7 +38,7 @@
 				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
 <!--				<prop key="hibernate.connection.datasource">java:comp/env/jdbc/Default</prop>-->
         		<prop key="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</prop>
-        		<prop key="hibernate.connection.url">jdbc:hsqldb:file:manage-inventory1db</prop>
+        		<prop key="hibernate.connection.url">jdbc:hsqldb:file:manage-inventorydb</prop>
         		<prop key="hibernate.connection.username">sa</prop>
         		<prop key="hibernate.connection.password"></prop>
         		<prop key="hibernate.hbm2ddl.auto">create</prop>

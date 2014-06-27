@@ -5,7 +5,7 @@
 <meta name="keywords" content="Nebula" />
 <link rel="shortcut icon" href="<c:url value="/resources/images/icts_favicon.ico" />" type="image/x-icon" >
 
-<title>${pageTitle} <c:if test="${not empty pageTitle}">:</c:if>manage-inventory1</title>
+<title>${pageTitle} <c:if test="${not empty pageTitle}">:</c:if>manage-inventory</title>
 
 <!-- bootstrap -->
 <script type="text/javascript" src="<c:url value="/resources/jquery/js/jquery.js"/>"></script>

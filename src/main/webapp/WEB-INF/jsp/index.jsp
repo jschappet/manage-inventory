@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/include.jsp"%>
 
 <div class="hero-unit">
-	<h1>manage-inventory1</h1>
+	<h1>manage-inventory</h1>
 	<p>
 		Bacon ipsum dolor sit amet sirloin pork chop pancetta, kielbasa beef ribs shankle hamburger salami sausage. 
 		Spare ribs capicola shankle short ribs, bacon chicken ground round. Jerky ribeye meatball bacon sausage. 
@@ -12,10 +12,10 @@
 
 <div id="myModal" class="modal hide fade">
 	<div class="modal-header">
-		<h3>manage-inventory1</h3>
+		<h3>manage-inventory</h3>
 	</div>
 	<div class="modal-body">
-		<p>Welcome to manage-inventory1.</p>
+		<p>Welcome to manage-inventory.</p>
 	</div>
 	<div class="modal-footer">
 		<a class="btn btn-primary" id="okModalButton">Ok</a>
