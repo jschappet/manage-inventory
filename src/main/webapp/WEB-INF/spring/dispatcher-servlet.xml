@@ -19,7 +19,7 @@
 
 	<mvc:annotation-driven />
 	<context:annotation-config/>
-   	<context:component-scan base-package="com.schappet.inventory" />
+   	<context:component-scan base-package="com.schappet" />
    	
    	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
