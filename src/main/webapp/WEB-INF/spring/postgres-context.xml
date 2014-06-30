@@ -20,7 +20,7 @@
 		<!-- Hibernate SessionFactory -->
 		<property name="packagesToScan">
 			<list>
-				<value>com.schappet</value>
+				<value>com.schappet.inv</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

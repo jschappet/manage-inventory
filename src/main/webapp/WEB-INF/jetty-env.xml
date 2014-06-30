@@ -7,13 +7,15 @@
      <Arg></Arg>
      <Arg>jdbc/manage-inventory</Arg>
      <Arg>
-        <New class="org.postgresql.ds.PGSimpleDataSource">
-           <Set name="User">qktnbkdibhbdbu</Set>
-           <Set name="Password">5ZuyiZUc2lemeKxaYTtKO_Vzzb</Set>
-           <Set name="DatabaseName">d16qgds6jmtkh0</Set>
-           <Set name="ServerName">ec2-54-204-45-196.compute-1.amazonaws.com</Set>
-           <Set name="PortNumber">5432</Set>
-        </New>
+       <New class="org.apache.commons.dbcp.BasicDataSource">
+	  <Set name="driverClassName">org.postgresql.Driver</Set>
+          <Set name="url">jdbc:postgresql://ec2-54-204-45-196.compute-1.amazonaws.com:5432/d16qgds6jmtkh0?sslfactory=org.postgresql.ssl.NonValidatingFactory&amp;ssl=true</Set>
+          <Set name="username">qktnbkdibhbdbu</Set>
+          <Set name="password">5ZuyiZUc2lemeKxaYTtKO_Vzzb</Set>
+          <Set name="minIdle">1</Set>
+       </New>
+
+
      </Arg>
      <Call name="bindToENC">
         <Arg>jdbc/manage-inventory</Arg> 
