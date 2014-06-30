@@ -1,2 +1,0 @@
-<%@ taglib prefix="dem" uri="http://icts.uiowa.edu/demographics"%>
-<dem:DemographicsAutocomplete useObfuscator="false" limit="15" useDepartment="false" useHawkid="true" type="radio" useTable="false" firstName="${first}" lastName="${last}" var="${var}"/>
