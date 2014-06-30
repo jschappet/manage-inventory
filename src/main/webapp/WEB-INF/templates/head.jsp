@@ -1,9 +1,9 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@ include file="/WEB-INF/include.jsp"  %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="Nebula" />
-<meta name="keywords" content="Nebula" />
-<link rel="shortcut icon" href="<c:url value="/resources/images/icts_favicon.ico" />" type="image/x-icon" >
+<meta name="description" content="manage inventory" />
+<meta name="keywords" content="manage inventory" />
+<link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" type="image/x-icon" >
 
 <title>${pageTitle} <c:if test="${not empty pageTitle}">:</c:if>manage-inventory</title>
 
