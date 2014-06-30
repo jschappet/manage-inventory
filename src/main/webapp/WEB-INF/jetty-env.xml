@@ -17,7 +17,8 @@
      </Arg>
      <Call name="bindToENC">
         <Arg>jdbc/manage-inventory</Arg> 
-		 <!-- binds jdbc/manage-inventory to java:comp/env/jdbc/manage-inventory for this webapp -->
+		 <!-- binds jdbc/manage-inventory to 
+			java:comp/env/jdbc/manage-inventory for this webapp -->
     </Call>
   </New>
 </Configure>
