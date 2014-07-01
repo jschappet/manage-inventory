@@ -29,11 +29,11 @@
 			<version>2.1</version>
 			<scope>provided</scope>
 		</dependency>
-<dependency>
-	<groupId>commons-dbcp</groupId>
-	<artifactId>commons-dbcp</artifactId>
-	<version>1.4</version>
-</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
@@ -405,16 +405,11 @@
 	<build>
 		<finalName>manage-inventory</finalName>
 		<plugins>
-		                       <plugin>
-                                <!-- Jetty < 9 is in org.mortbay.jetty groupId -->
-                                <groupId>org.mortbay.jetty</groupId>
-                                <version>8.1.9.v20130131</version>
-                                <!-- Starting from Jetty 9 groupId is org.eclipse.jetty already -->
-                                <!-- <groupId>org.eclipse.jetty</groupId> -->
-                                <!-- Change to latest version available from http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.eclipse.jetty%22%20AND%20a%3A%22jetty-maven-plugin%22 -->
-                                <!-- <version>9.x.y.z</version> -->
-                                <artifactId>jetty-maven-plugin</artifactId>
-                        </plugin>
+			<plugin>
+				  <groupId>org.mortbay.jetty</groupId>
+				  <artifactId>jetty-maven-plugin</artifactId>
+				  <version>8.1.15.v20140411</version>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
@@ -452,7 +447,8 @@
                             <artifactItem>
                                 <groupId>org.mortbay.jetty</groupId>
                                 <artifactId>jetty-runner</artifactId>
-                                <version>8.1.9.v20130131</version>
+                                <!-- <version>8.1.9.v20130131</version> -->
+                                <version>8.1.15.v20140411</version> 
                                 <destFileName>jetty-runner.jar</destFileName>
                             </artifactItem>
                         </artifactItems>
