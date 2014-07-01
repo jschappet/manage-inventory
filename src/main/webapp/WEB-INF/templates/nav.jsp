@@ -11,7 +11,7 @@
 			</a> 
 			
 			<c:url value="/index.html" var="indexUrl"/>
-			<a class="brand" href="${ indexUrl }">ICTS</a>
+			<a class="brand" href="${ indexUrl }">Inventory</a>
 			
 			<div class="btn-group pull-right">
 				<sec:authorize access="!isAuthenticated()">
