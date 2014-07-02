@@ -41,12 +41,12 @@ public class PropertyController extends AbstractInvController {
     public ModelAndView listNoScript() {
         ModelMap model = new ModelMap();
         model.addAttribute("propertyList",invDaoService.getPropertyService().list());
-        return new ModelAndView("/inv/property/list_alt", model);
+        return new ModelAndView("inv/property/list_alt", model);
     }
 
     @RequestMapping(value = "list.html", method = RequestMethod.GET)
     public ModelAndView list() {
-        return new ModelAndView("/inv/property/list");
+        return new ModelAndView("inv/property/list");
     }
 
     @RequestMapping(value = "datatable.html", method = RequestMethod.GET)
@@ -200,7 +200,7 @@ public class PropertyController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Property property = new Property();
         model.addAttribute("property",property);
-        return new ModelAndView("/inv/property/edit",model);
+        return new ModelAndView("inv/property/edit",model);
     }
 
     @RequestMapping(value = "edit.html", method = RequestMethod.GET)
@@ -208,7 +208,7 @@ public class PropertyController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Property property = invDaoService.getPropertyService().findById(propertyId);
         model.addAttribute("property",property);
-        return new ModelAndView("/inv/property/edit",model);
+        return new ModelAndView("inv/property/edit",model);
     }
 
     @RequestMapping(value = "show.html", method = RequestMethod.GET)
@@ -216,7 +216,7 @@ public class PropertyController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Property property = invDaoService.getPropertyService().findById(propertyId);
         model.addAttribute("property",property);
-        return new ModelAndView("/inv/property/show",model);
+        return new ModelAndView("inv/property/show",model);
     }
 
     @RequestMapping(value = "save.html", method = RequestMethod.POST)

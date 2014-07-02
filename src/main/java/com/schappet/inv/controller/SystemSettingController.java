@@ -41,12 +41,12 @@ public class SystemSettingController extends AbstractInvController {
     public ModelAndView listNoScript() {
         ModelMap model = new ModelMap();
         model.addAttribute("systemSettingList",invDaoService.getSystemSettingService().list());
-        return new ModelAndView("/inv/systemsetting/list_alt", model);
+        return new ModelAndView("inv/systemsetting/list_alt", model);
     }
 
     @RequestMapping(value = "list.html", method = RequestMethod.GET)
     public ModelAndView list() {
-        return new ModelAndView("/inv/systemsetting/list");
+        return new ModelAndView("inv/systemsetting/list");
     }
 
     @RequestMapping(value = "datatable.html", method = RequestMethod.GET)
@@ -194,7 +194,7 @@ public class SystemSettingController extends AbstractInvController {
         ModelMap model = new ModelMap();
         SystemSetting systemSetting = new SystemSetting();
         model.addAttribute("systemSetting",systemSetting);
-        return new ModelAndView("/inv/systemsetting/edit",model);
+        return new ModelAndView("inv/systemsetting/edit",model);
     }
 
     @RequestMapping(value = "edit.html", method = RequestMethod.GET)
@@ -202,7 +202,7 @@ public class SystemSettingController extends AbstractInvController {
         ModelMap model = new ModelMap();
         SystemSetting systemSetting = invDaoService.getSystemSettingService().findById(systemSettingId);
         model.addAttribute("systemSetting",systemSetting);
-        return new ModelAndView("/inv/systemsetting/edit",model);
+        return new ModelAndView("inv/systemsetting/edit",model);
     }
 
     @RequestMapping(value = "show.html", method = RequestMethod.GET)
@@ -210,7 +210,7 @@ public class SystemSettingController extends AbstractInvController {
         ModelMap model = new ModelMap();
         SystemSetting systemSetting = invDaoService.getSystemSettingService().findById(systemSettingId);
         model.addAttribute("systemSetting",systemSetting);
-        return new ModelAndView("/inv/systemsetting/show",model);
+        return new ModelAndView("inv/systemsetting/show",model);
     }
 
     @RequestMapping(value = "save.html", method = RequestMethod.POST)

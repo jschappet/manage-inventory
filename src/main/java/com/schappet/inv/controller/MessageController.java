@@ -46,7 +46,8 @@ public class MessageController extends AbstractInvController {
 
     @RequestMapping(value = "list.html", method = RequestMethod.GET)
     public ModelAndView list() {
-        return new ModelAndView("/inv/message/list");
+        return new ModelAndView("inv/message/list");
+
     }
 
     @RequestMapping(value = "datatable.html", method = RequestMethod.GET)
@@ -54,7 +55,7 @@ public class MessageController extends AbstractInvController {
         @RequestParam(value="iDisplayLength") Integer limit, 
         @RequestParam(value="iDisplayStart") Integer start, 
         @RequestParam(value="iColumns") Integer numberColumns, 
-        @RequestParam(value="iColumns") Integer columnCount, 
+        @RequestParam(value="iColmns") Integer columnCount, 
         @RequestParam(value="sColumns") String columns, 
         @RequestParam(value="sEcho") String echo, 
         @RequestParam(value="bFilter") String bFilter, 
@@ -200,7 +201,7 @@ public class MessageController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Message message = new Message();
         model.addAttribute("message",message);
-        return new ModelAndView("/inv/message/edit",model);
+        return new ModelAndView("inv/message/edit",model);
     }
 
     @RequestMapping(value = "edit.html", method = RequestMethod.GET)
@@ -208,7 +209,7 @@ public class MessageController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Message message = invDaoService.getMessageService().findById(messageId);
         model.addAttribute("message",message);
-        return new ModelAndView("/inv/message/edit",model);
+        return new ModelAndView("inv/message/edit",model);
     }
 
     @RequestMapping(value = "show.html", method = RequestMethod.GET)
@@ -216,7 +217,7 @@ public class MessageController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Message message = invDaoService.getMessageService().findById(messageId);
         model.addAttribute("message",message);
-        return new ModelAndView("/inv/message/show",model);
+        return new ModelAndView("inv/message/show",model);
     }
 
     @RequestMapping(value = "save.html", method = RequestMethod.POST)

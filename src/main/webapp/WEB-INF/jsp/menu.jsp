@@ -2,6 +2,10 @@
 
 <ul class="nav nav-list">
 	<li><a href="<c:url value="/index.html" />">Home</a></li>
+	<li><a href="<c:url value="/inv/message/list.html" />" >Message List</a></li>
+<li><a href="<c:url value="/inv/systemsetting/list.html" />" >SystemSetting List</a></li>
+<li><a href="<c:url value="/inv/property/list.html" />" >Property List</a></li>
+<li><a href="<c:url value="/inv/task/list.html" />" >Task List</a></li>
 	<sec:authorize access="isAuthenticated()">
 		
 	</sec:authorize>

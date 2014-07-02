@@ -41,12 +41,12 @@ public class TaskController extends AbstractInvController {
     public ModelAndView listNoScript() {
         ModelMap model = new ModelMap();
         model.addAttribute("taskList",invDaoService.getTaskService().list());
-        return new ModelAndView("/inv/task/list_alt", model);
+        return new ModelAndView("inv/task/list_alt", model);
     }
 
     @RequestMapping(value = "list.html", method = RequestMethod.GET)
     public ModelAndView list() {
-        return new ModelAndView("/inv/task/list");
+        return new ModelAndView("inv/task/list");
     }
 
     @RequestMapping(value = "datatable.html", method = RequestMethod.GET)
@@ -201,7 +201,7 @@ public class TaskController extends AbstractInvController {
         Task task = new Task();
         model.addAttribute("task",task);
         model.addAttribute("propertyList",invDaoService.getPropertyService().list());
-        return new ModelAndView("/inv/task/edit",model);
+        return new ModelAndView("inv/task/edit",model);
     }
 
     @RequestMapping(value = "edit.html", method = RequestMethod.GET)
@@ -210,7 +210,7 @@ public class TaskController extends AbstractInvController {
         model.addAttribute("propertyList",invDaoService.getPropertyService().list());
         Task task = invDaoService.getTaskService().findById(taskId);
         model.addAttribute("task",task);
-        return new ModelAndView("/inv/task/edit",model);
+        return new ModelAndView("inv/task/edit",model);
     }
 
     @RequestMapping(value = "show.html", method = RequestMethod.GET)
@@ -218,7 +218,7 @@ public class TaskController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Task task = invDaoService.getTaskService().findById(taskId);
         model.addAttribute("task",task);
-        return new ModelAndView("/inv/task/show",model);
+        return new ModelAndView("inv/task/show",model);
     }
 
     @RequestMapping(value = "save.html", method = RequestMethod.POST)
