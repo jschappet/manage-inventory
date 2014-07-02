@@ -52,17 +52,19 @@ public class MessageController extends AbstractInvController {
 
     @RequestMapping(value = "datatable.html", method = RequestMethod.GET)
     public void datatable( HttpServletRequest request, HttpServletResponse response, 
-        @RequestParam(value="iDisplayLength") Integer limit, 
-        @RequestParam(value="iDisplayStart") Integer start, 
+        @RequestParam(value="iDisplayLength", required=false) Integer limit, 
+        @RequestParam(value="iDisplayStart", required=false) Integer start, 
         @RequestParam(value="iColumns") Integer numberColumns, 
-        @RequestParam(value="iColmns") Integer columnCount, 
-        @RequestParam(value="sColumns") String columns, 
-        @RequestParam(value="sEcho") String echo, 
-        @RequestParam(value="bFilter") String bFilter, 
+        @RequestParam(value="iColmns", required=false) Integer columnCount, 
+        @RequestParam(value="sColumns", required=false) String columns, 
+        @RequestParam(value="sEcho", required=false) String echo, 
+        @RequestParam(value="bFilter", required=false) String bFilter, 
         @RequestParam(value="iSortingCols", required=false) Integer sortingColsCount, 
         @RequestParam(value="sSearch", required=false) String search, 
         @RequestParam(value="display", required=false, defaultValue="list") String display ) {
 
+    	log.debug("Starting Datatable");
+    	
         ArrayList<SortColumn> sorts = new ArrayList<SortColumn>();
         try {
 
