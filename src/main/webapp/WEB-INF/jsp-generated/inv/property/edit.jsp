@@ -15,10 +15,6 @@
         <form:input path="description"  />
         <br/>
         
-        <label for="location">Location</label>
-        <form:input path="location"  />
-        <br/>
-        
         <label for="createdBy">CreatedBy</label>
         <form:input path="createdBy"  />
         <br/>
@@ -35,6 +31,11 @@
         <form:input path="updated" cssClass="dateInput" />
         <br/>
         
+
+        
+        <label for="location.locationId">Location</label>
+        <form:select path="location.locationId" items="${locationList}" itemValue="locationId" itemLabel="name"/>
+        <br/>
 
         
         <input type="submit" value="Save" class="btn btn-primary" />

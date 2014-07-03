@@ -14,12 +14,12 @@
             <th>PropertyId</th>
             <th>Name</th>
             <th>Description</th>
-            <th>Location</th>
             <th>CreatedBy</th>
             <th>Created</th>
             <th>UpdatedBy</th>
             <th>Updated</th>
             <th>Tasks</th>
+            <th>Location</th>
             <th></th>
         </tr>
     </thead>
@@ -29,12 +29,12 @@
                 <td><a href="edit.html?propertyId=${property.propertyId}">${property.propertyId}</a></td>
                 <td>${property.name}</td>
                 <td>${property.description}</td>
-                <td>${property.location}</td>
                 <td>${property.createdBy}</td>
                 <td>${property.created}</td>
                 <td>${property.updatedBy}</td>
                 <td>${property.updated}</td>
                 <td>tasks</td>
+                <td>${property.location.locationId}</td>
                 <td>
                     <a href="edit.html?propertyId=${property.propertyId}">edit</a> 
                     <a href="show.html?propertyId=${property.propertyId}">view</a>

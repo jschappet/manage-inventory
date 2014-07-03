@@ -41,7 +41,7 @@ public class MessageController extends AbstractInvController {
     public ModelAndView listNoScript() {
         ModelMap model = new ModelMap();
         model.addAttribute("messageList",invDaoService.getMessageService().list());
-        return new ModelAndView("/inv/message/list_alt", model);
+        return new ModelAndView("inv/message/list_alt", model);
     }
 
     @RequestMapping(value = "list.html", method = RequestMethod.GET)

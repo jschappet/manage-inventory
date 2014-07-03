@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <clay-model clay-version="1.4.2">
-<database-model alias="" author="" begin-script="CREATE SCHEMA schemaname&#10;  AUTHORIZATION test;&#10;CREATE SEQUENCE schemaname.seqnum&#10;  INCREMENT 1&#10;  MINVALUE 1&#10;  MAXVALUE 9223372036854775807&#10;  START 31&#10;  CACHE 1;" end-script="" name="model" remarks="" sql-dialect-id="jp.azzurri.clay.dialect.Postgre_7_3_Dialect" uid="34dcf4d9:12c7933ea8c:-7fe2" version="1.0">
+<database-model alias="" author="" begin-script="DROP SCHEMA inv CASCADE;&#10;CREATE SCHEMA inv;&#10;CREATE SEQUENCE inv.seqnum&#10;  INCREMENT 1&#10;  MINVALUE 1&#10;  MAXVALUE 9223372036854775807&#10;  START 31&#10;  CACHE 1;" end-script="" name="model" remarks="" sql-dialect-id="jp.azzurri.clay.dialect.Postgre_7_3_Dialect" uid="34dcf4d9:12c7933ea8c:-7fe2" version="1.0">
 <database-model-description/>
 <schema-list>
 <schema alias="" name="inv" remarks="" uid="34dcf4d9:12c7933ea8c:-7fdf">
@@ -137,7 +137,7 @@
 </table>
 <table alias="" name="property" remarks="" uid="6162e413:146af1c9cdc:-7ff0">
 <table-description/>
-<table-figure-bounds height="232" width="187" x="444" y="39"/>
+<table-figure-bounds height="232" width="187" x="459" y="124"/>
 <column-list>
 <column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="property_id" remarks="" uid="6162e413:146af1c9cdc:-7fec">
 <column-description/>
@@ -155,12 +155,6 @@
 <column-description/>
 <data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
 <variant type-name-pattern="TEXT"/>
-</data-type>
-</column>
-<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="location" remarks="" uid="6162e413:146af1c9cdc:-7fe9">
-<column-description/>
-<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
-<variant type-name-pattern="INT"/>
 </data-type>
 </column>
 <column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="created_by" remarks="" uid="6162e413:146af1c9cdc:-7fe6">
@@ -195,13 +189,27 @@
 <variant precision-max="9" precision-min="1" precision-variable="%p" type-name-pattern="TIMESTAMP(%p) WITHOUT TIME ZONE"/>
 </data-type>
 </column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="location_id" remarks="" uid="27a08a58:146fd52245f:-7fbb">
+<column-description/>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
 </column-list>
 <primary-key alias="" name="PK_PROPERTY" remarks="" uid="6162e413:146af1c9cdc:-7fef">
 <primary-key-description/>
 <primary-key-column name="property_id"/>
 </primary-key>
 <unique-key-list/>
-<foreign-key-list/>
+<foreign-key-list>
+<foreign-key alias="" name="FK_property_1" on-delete="" on-update="" referenced-key="PK_LOCATION" referenced-table="location" referenced-table-schema="inv" remarks="" source-entity-role="" source-multiplicity="0..*" source-relationship-type="" target-entity-role="" target-multiplicity="1" target-relationship-type="" uid="27a08a58:146fd52245f:-7fbc">
+<foreign-key-description/>
+<foreign-key-figure>
+<fk-fig-bendpoint-list/>
+</foreign-key-figure>
+<foreign-key-column column-name="location_id" referenced-key-column-name="location_id"/>
+</foreign-key>
+</foreign-key-list>
 <index-list/>
 </table>
 <table alias="" name="task" remarks="" uid="6162e413:146af1c9cdc:-7fe0">
@@ -289,6 +297,128 @@
 <foreign-key-column column-name="property_id" referenced-key-column-name="property_id"/>
 </foreign-key>
 </foreign-key-list>
+<index-list/>
+</table>
+<table alias="" name="person" remarks="" uid="27a08a58:146fd52245f:-7ffc">
+<table-description/>
+<table-figure-bounds height="151" width="226" x="690" y="505"/>
+<column-list>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="person_id" remarks="" uid="27a08a58:146fd52245f:-7ff8">
+<column-description/>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="first_name" remarks="" uid="27a08a58:146fd52245f:-7ff7">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="last_name" remarks="" uid="27a08a58:146fd52245f:-7ff6">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="username" remarks="" uid="27a08a58:146fd52245f:-7ff5">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="consent" remarks="" uid="27a08a58:146fd52245f:-7ff4">
+<column-description/>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="false" mandatory="false" name="deleted" remarks="" uid="27a08a58:146fd52245f:-7ff3">
+<column-description/>
+<data-type jdbc-type="16" name="BOOLEAN" selected-variant-pattern="BOOLEAN">
+<variant type-name-pattern="BOOLEAN"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="language_id" remarks="" uid="27a08a58:146fd52245f:-7ff2">
+<column-description/>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="password" remarks="" uid="27a08a58:146fd52245f:-7fef">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_PERSON" remarks="" uid="27a08a58:146fd52245f:-7ffb">
+<primary-key-description/>
+<primary-key-column name="person_id"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
+<index-list/>
+</table>
+<table alias="" name="location" remarks="" uid="27a08a58:146fd52245f:-7fee">
+<table-description/>
+<table-figure-bounds height="201" width="236" x="378" y="456"/>
+<column-list>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="location_id" remarks="" uid="27a08a58:146fd52245f:-7fea">
+<column-description/>
+<data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
+<variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="name" remarks="" uid="27a08a58:146fd52245f:-7fe9">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="description" remarks="" uid="27a08a58:146fd52245f:-7fe8">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="address_1" remarks="" uid="27a08a58:146fd52245f:-7fe7">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="address_2" remarks="" uid="27a08a58:146fd52245f:-7fe6">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="city" remarks="" uid="27a08a58:146fd52245f:-7fe5">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="state" remarks="" uid="27a08a58:146fd52245f:-7fe4">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="zip_code" remarks="" uid="27a08a58:146fd52245f:-7fe3">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
+</data-type>
+</column>
+</column-list>
+<primary-key alias="" name="PK_LOCATION" remarks="" uid="27a08a58:146fd52245f:-7fed">
+<primary-key-description/>
+<primary-key-column name="location_id"/>
+</primary-key>
+<unique-key-list/>
+<foreign-key-list/>
 <index-list/>
 </table>
 </table-list>

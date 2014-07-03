@@ -6,4 +6,6 @@
 <li><a href="<c:url value="/inv/systemsetting/list.html" />" >SystemSetting List</a></li>
 <li><a href="<c:url value="/inv/property/list.html" />" >Property List</a></li>
 <li><a href="<c:url value="/inv/task/list.html" />" >Task List</a></li>
+<li><a href="<c:url value="/inv/person/list.html" />" >Person List</a></li>
+<li><a href="<c:url value="/inv/location/list.html" />" >Location List</a></li>
 </ul></li></ul>

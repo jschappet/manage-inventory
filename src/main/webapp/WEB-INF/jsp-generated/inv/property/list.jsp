@@ -20,12 +20,12 @@
     cols.push({ "sName": "propertyId", "sTitle":"PropertyId",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "name", "sTitle":"Name",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "description", "sTitle":"Description",	"sClass":"", "bSortable":true, "bSearchable": true });
-    cols.push({ "sName": "location", "sTitle":"Location",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "createdBy", "sTitle":"CreatedBy",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "created", "sTitle":"Created",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "updatedBy", "sTitle":"UpdatedBy",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "updated", "sTitle":"Updated",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "tasks", "sTitle":"Tasks",	"sClass":"", "bSortable":false, "bSearchable": false });
+    cols.push({ "sName": "location", "sTitle":"Location",	"sClass":"", "bSortable":false, "bSearchable": false });
     cols.push({ "sName": "urls", "sTitle":"", "sClass":"", "bSortable":false, "bSearchable": false });
     setDataTable({
         id : 'propertyTable',

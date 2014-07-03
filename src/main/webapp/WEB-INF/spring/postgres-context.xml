@@ -37,5 +37,11 @@
 	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="myDataSource" class="org.springframework.jndi.JndiObjectFactoryBean" >
+		<property name="jndiName"><value>java:comp/env/jdbc/manage-inventory</value></property>
+
+	</bean>
+
+ 
 	<tx:annotation-driven transaction-manager="transactionManager"  />
 </beans>

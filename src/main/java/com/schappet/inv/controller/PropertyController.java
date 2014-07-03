@@ -138,7 +138,7 @@ public class PropertyController extends AbstractInvController {
                     } else if( "description".equals(column) ){
                         tmp.put(property.getDescription());
                     } else if( "location".equals(column) ){
-                        tmp.put(property.getLocation());
+                        tmp.put(property.getLocation().getName());
                     } else if( "createdBy".equals(column) ){
                         tmp.put(property.getCreatedBy());
                     } else if( "created".equals(column) ){
@@ -200,6 +200,7 @@ public class PropertyController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Property property = new Property();
         model.addAttribute("property",property);
+        model.addAttribute("locationList",invDaoService.getLocationService().list());
         return new ModelAndView("inv/property/edit",model);
     }
 
@@ -208,6 +209,7 @@ public class PropertyController extends AbstractInvController {
         ModelMap model = new ModelMap();
         Property property = invDaoService.getPropertyService().findById(propertyId);
         model.addAttribute("property",property);
+        model.addAttribute("locationList",invDaoService.getLocationService().list());
         return new ModelAndView("inv/property/edit",model);
     }
 

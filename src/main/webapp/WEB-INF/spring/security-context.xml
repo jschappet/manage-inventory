@@ -11,11 +11,12 @@
     <global-method-security pre-post-annotations="enabled"/>
 
     <http use-expressions="true">
-    	<custom-filter ref="switchUserProcessingFilter" after="FILTER_SECURITY_INTERCEPTOR"/>
+<!--     	<custom-filter ref="switchUserProcessingFilter" after="FILTER_SECURITY_INTERCEPTOR"/> -->
 		
-		<intercept-url pattern="/switch_user.html" access="hasRole('ROLE_ICTS-DEVSUPPORT')" />
+		<intercept-url pattern="/switch_user.html" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/inv/**" access="hasRole('ROLE_USER')" />
 		
-		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ICTS-DEVSUPPORT')"/>
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_USER')"/>
 		
         <intercept-url pattern="/**" access="permitAll" />
      
@@ -26,26 +27,18 @@
 			<concurrency-control max-sessions="5" error-if-maximum-exceeded="false"  />
 		</session-management>
     </http>
-    
-    <ldap-server id="ldapServer" 
-    			 url="ldaps://gc.iowa.uiowa.edu:3269/"  
-    			 root="dc=iowa,dc=uiowa,dc=edu" 
-    			 manager-dn="HAWKIDUSER" 
-    			 manager-password="NEWPASSWORD"  />
-    
-    <ldap-user-service id="userDetailsService" 
-    				   server-ref="ldapServer" 
-    				   user-search-filter="(cn={0})" 
-    				   group-search-base="dc=iowa,dc=uiowa,dc=edu" 
-    				   user-search-base="dc=iowa,dc=uiowa,dc=edu" 
-    				   group-search-filter="(member={0})"  />
-
     <authentication-manager>
-    	<ldap-authentication-provider server-ref="ldapServer" user-search-filter="cn={0}"  
-    		group-search-base="dc=iowa,dc=uiowa,dc=edu"
-    		group-search-filter="(member={0})" 
-    		group-role-attribute="cn" 
-    		role-prefix="ROLE_"  user-search-base="dc=iowa,dc=uiowa,dc=edu" />
+		<authentication-provider>
+			<password-encoder hash="md5" />
+			<jdbc-user-service data-source-ref="myDataSource" 
+			users-by-username-query="SELECT username, password, 'true' as enabled from inv.person where username=?"
+			authorities-by-username-query="SELECT ? as username, 'ROLE_USER' as USERROLE" 
+			/>
+		</authentication-provider>
+		
+		
+
+
     </authentication-manager>
 
 </beans:beans>

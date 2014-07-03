@@ -23,12 +23,6 @@
         </td>
     </tr>
     <tr>
-        <th>Location</th>
-        <td>
-            ${property.location}
-        </td>
-    </tr>
-    <tr>
         <th>CreatedBy</th>
         <td>
             ${property.createdBy}
@@ -60,6 +54,12 @@
                     <li><a href="../task/edit.html?taskId=${item.taskId}" > ${item.taskId}</a></li>
                 </c:forEach>
             </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>Location</th>
+        <td>
+            ${property.location}
         </td>
     </tr>
 </table>
