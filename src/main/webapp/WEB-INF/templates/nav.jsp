@@ -29,14 +29,8 @@
 						&nbsp;Welcome&nbsp;${ username }&nbsp;<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-	              		<su:isSwitched>
-			 				<li><a href="<c:url value='/exit_switch_user'/>">Exit Switch</a></li>
-			 			</su:isSwitched>
-			 			<sec:authorize access="hasRole('ROLE_ICTS-DEVSUPPORT')">
-				 			<su:isNotSwitched>
-				 				<li><a href="<c:url value='/switch_user.html'/>">Switch User</a></li>
-				 			</su:isNotSwitched>
-				 		</sec:authorize>
+	              		<li><a href="<c:url value="/profile.html" />">Profile</a></li>
+
 	              		<li><a href="<c:url value="/logout" />">Sign Out</a></li>
 	           		</ul>
 				</sec:authorize>

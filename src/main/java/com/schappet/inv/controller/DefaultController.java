@@ -3,7 +3,6 @@ package com.schappet.inv.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,15 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.ProjectionList;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-import org.joda.time.LocalDate;
-import org.joda.time.Years;
-import org.json.JSONObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.schappet.inv.dao.InvDaoService;
 import com.schappet.inv.domain.Message;
+import com.schappet.inv.domain.Person;
 
 import edu.uiowa.icts.exception.MappingNotFoundException;
 
@@ -92,6 +82,15 @@ public class DefaultController extends AbstractInvController {
 		return new ModelAndView("faq", model);
 	}
 	
+	@RequestMapping(value = "profile.html", method = RequestMethod.GET)
+	public ModelAndView profile(HttpServletRequest req,HttpServletResponse res){
+		ModelMap model = new ModelMap();
+		Person person = invDaoService.getPersonService().findByUsername(getUsername());
+		model.addAttribute("person",person);
+        return new ModelAndView("inv/person/edit",model);
+	}
+
+
 	@RequestMapping(value = "contact.html", method = RequestMethod.GET)
 	public ModelAndView contact(HttpServletRequest req,HttpServletResponse res){
 		ModelMap model = new ModelMap();

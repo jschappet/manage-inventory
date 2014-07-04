@@ -1,12 +1,18 @@
 package com.schappet.inv.dao;
 
 import edu.uiowa.icts.spring.*;
+
 import com.schappet.inv.domain.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.criterion.Order;
+
 import edu.uiowa.icts.util.SortColumn;
+
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.Log;
 import org.springframework.stereotype.Repository;
@@ -31,4 +37,17 @@ public class PersonHome extends GenericDao<Person> implements PersonService {
         return (Person) this.sessionFactory.getCurrentSession().get( getDomainName(), id );
     }
 
+    public Person findByUsername( String username ) {
+    	try {
+    	Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria( Class.forName( getDomainName() ) );
+		criteria.add( Restrictions.eq( "username",username ) );
+		criteria.setMaxResults( 1 );
+		return (Person)criteria.uniqueResult();
+	} catch ( HibernateException e ) {
+		log.error( "error creating criteria for class " + getDomainName(), e );
+	} catch ( ClassNotFoundException e ) {
+		log.error( "error creating criteria for class " + getDomainName(), e );
+	}
+	return null;
+    }
 }
