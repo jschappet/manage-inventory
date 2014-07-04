@@ -3,6 +3,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="description" content="manage inventory" />
 <meta name="keywords" content="manage inventory" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" type="image/x-icon" >
 
 <title>${pageTitle} <c:if test="${not empty pageTitle}">:</c:if>manage-inventory</title>

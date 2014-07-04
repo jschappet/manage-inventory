@@ -9,14 +9,14 @@
 				<div class="control-group">
 					<label for="username" class="control-label">Username</label>
 					<div class="controls">
-						<input type="text" id="username" name="j_username" size="20" placeholder="username" />
+						<input type="text" id="username" name="j_username" size="20" placeholder="username"  autocapitalize="off"/>
 					</div>
 				</div>
 				
 				<div class="control-group">
 					<label for="password" class="control-label">Password</label>
 					<div class="controls">
-						<input id="password" type="password" name="j_password" size="20" placeholder="password" />
+						<input id="password" type="password" name="j_password" size="20" placeholder="password" autocapitalize="off" />
 					</div>
 				</div>
 	
