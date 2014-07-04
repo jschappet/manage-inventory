@@ -407,7 +407,5 @@
 
 		</plugins>
 	</build>
-
-</profiles>
 	<packaging>war</packaging>
 </project>
