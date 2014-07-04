@@ -148,7 +148,7 @@ public class TaskController extends AbstractInvController {
                     } else if( "completed".equals(column) ){
                         tmp.put(task.getCompleted());
                     } else if( "property".equals(column) ){
-                        tmp.put(task.getProperty());
+                        tmp.put(task.getProperty().getName());
                     } else if( "urls".equals(column)) {
                         urls = "";
                         if("list".equals(display)){
