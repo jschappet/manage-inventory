@@ -1,0 +1,2 @@
+insert into inv.person(person_id,username,first_name,last_name,password,email) values (nextval('inv.seqnum'),'schappetj','James','Schappet','098f6bcd4621d373cade4e832627b4f6','jimmy@schappet.com');
+insert into inv.person(person_id,username,first_name,last_name,password,email) values (nextval('inv.seqnum'),'bpribyl','Brandon','Pribyl','c104aeacc4b8fcfc282ed6a6315dce79','brandon@schappet.com');
