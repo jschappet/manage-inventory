@@ -7,6 +7,6 @@
     </preConditions>
     
 	<changeSet author="default" id="initialDBCreate">
-		<sqlFile path="model-postgres.sql"/>
+		<sqlFile path="schema/model.sql"/>
 	</changeSet>
 </databaseChangeLog>

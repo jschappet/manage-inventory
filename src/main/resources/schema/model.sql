@@ -1,4 +1,4 @@
-DROP  SCHEMA inv CASCADE ;
+--DROP  SCHEMA inv CASCADE ;
 CREATE SCHEMA inv ;
 CREATE SEQUENCE inv.seqnum INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 31 CACHE 1;
 
@@ -17,6 +17,7 @@ CREATE TABLE inv.person (
      , first_name TEXT NOT NULL
      , last_name TEXT NOT NULL
      , username TEXT
+     , email TEXT NOT NULL
      , consent BOOLEAN
      , deleted BOOLEAN DEFAULT false
      , language_id INT
