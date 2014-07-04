@@ -147,9 +147,9 @@
 			<type>jar</type>
 		</dependency>
 		<dependency>
-			<groupId>postgresql</groupId>
+			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.1-901.jdbc4</version>
+			<version>9.3-1100-jdbc41</version>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
@@ -158,8 +158,6 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-io</artifactId>
@@ -174,8 +172,6 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
@@ -188,17 +184,6 @@
 			<artifactId>liquibase-slf4j</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-
-
-		<!-- <dependency> -->
-		<!-- <groupId>pdfbox</groupId> -->
-		<!-- <artifactId>pdfbox</artifactId> -->
-		<!-- <version>1.6.0</version> -->
-		<!-- <scope>compile</scope> -->
-		<!-- </dependency> -->
-
-
-
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>persistence-api</artifactId>
@@ -348,7 +333,6 @@
 			<artifactId>spring-webflow</artifactId>
 			<version>2.1.1.RELEASE</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.axsl.org.w3c.dom.svg</groupId>
 			<artifactId>svg-dom-java</artifactId>
@@ -359,24 +343,12 @@
 			<artifactId>sac</artifactId>
 			<version>1.3</version>
 		</dependency>
-
-
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20140107</version>
 		</dependency>
-
-
 	</dependencies>
-
-
-
-
-
-
-
-
 
 	<build>
 		<finalName>manage-inventory</finalName>
@@ -435,99 +407,7 @@
 
 		</plugins>
 	</build>
-	<profiles>
-		<profile>
-			<id>heroku</id>
-			<build>
-				<resources>
-					<resource>
-						<directory>src/non-packaged-resources/dbchanges</directory>
-					</resource>
-				</resources>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>sql-maven-plugin</artifactId>
-						<version>1.4</version>
-						<!-- common configuration shared by all executions -->
-						<configuration>
-							<driver>${db.driver}</driver>
-							<url>${db.liquibase.url}</url>
-							<username>${db.username}</username>
-							<password>${db.passwd}</password>
-						</configuration>
-						<executions>
-							<execution>
-								<id>create-schema</id>
-								<phase>process-resources</phase>
-								<goals>
-									<goal>execute</goal>
-								</goals>
-								<configuration>
-									<onError>continue</onError>
-									<sqlCommand>CREATE SCHEMA ${db.schema}</sqlCommand>
-								</configuration>
-							</execution>
-							<execution>
-							</execution>
-						</executions>
-						<dependencies>
-							<dependency>
-								<groupId>postgresql</groupId>
-								<artifactId>postgresql</artifactId>
-								<version>9.1-901.jdbc4</version>
-							</dependency>
-						</dependencies>
-					</plugin>
-					<plugin>
-						<groupId>org.liquibase</groupId>
-						<artifactId>liquibase-plugin</artifactId>
-						<version>1.9.5.0</version>
-						<executions>
-							<execution>
-								<id>liquibase-run</id>
-								<phase>process-resources</phase>
-								<configuration>
-									<changeLogFile>${db.changelog.file}</changeLogFile>
-									<driver>${db.driver}</driver>
-									<url>${db.liquibase.url}</url>
-									<username>${db.username}</username>
-									<password>${db.passwd}</password>
-									<defaultSchemaName>${db.schema}</defaultSchemaName>
-									<dropFirst>false</dropFirst>
-									<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-								</configuration>
-								<goals>
-									<goal>update</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>properties-maven-plugin</artifactId>
-						<version>1.0-alpha-2</version>
-						<executions>
-							<execution>
-								<phase>initialize</phase>
-								<goals>
-									<goal>read-project-properties</goal>
-								</goals>
-								<configuration>
-									<quiet>true</quiet>
-									<files>
-										<file>src/non-packaged-resources/database-postgres.properties</file>
-										<!-- LAST FILE WINS -->
-										<file>${env.HOME}/config/${project.artifactId}.properties</file>
-									</files>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
 
-	</profiles>
+</profiles>
 	<packaging>war</packaging>
 </project>

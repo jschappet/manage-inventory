@@ -19,6 +19,11 @@
         <form:input path="username"  />
         <br/>
         
+        <label for="email">Email Address</label>
+        <form:input path="email"   type="email" />
+        <br/>
+        
+        
         <label for="consent">Consent</label>
         <form:input path="consent"  />
         <br/>

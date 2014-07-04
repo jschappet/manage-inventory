@@ -38,33 +38,34 @@ public class Person {
         private String firstName;
         private String lastName;
         private String username;
+        private String email;
         private Boolean consent;
         private Boolean deleted;
         private Integer languageId;
         private String password;
 
-    public Person()    {
-        this.personId = null;
-        this.firstName = "";
-        this.lastName = "";
-        this.username = "";
-        this.consent = null;
-        this.deleted = null;
-        this.languageId = null;
-        this.password = "";
-    }
-
-    public Person(Integer personId, String firstName, String lastName, String username, Boolean consent, Boolean deleted, Integer languageId, String password)
-    {
-        this.personId = personId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.consent = consent;
-        this.deleted = deleted;
-        this.languageId = languageId;
-        this.password = password;
-    }
+//    public Person()    {
+//        this.personId = null;
+//        this.firstName = "";
+//        this.lastName = "";
+//        this.username = "";
+//        this.consent = null;
+//        this.deleted = null;
+//        this.languageId = null;
+//        this.password = "";
+//    }
+//
+//    public Person(Integer personId, String firstName, String lastName, String username, Boolean consent, Boolean deleted, Integer languageId, String password)
+//    {
+//        this.personId = personId;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.username = username;
+//        this.consent = consent;
+//        this.deleted = deleted;
+//        this.languageId = languageId;
+//        this.password = password;
+//    }
 
     /*****personId*****/
     @javax.persistence.SequenceGenerator(  name="gen",  sequenceName="inv.seqnum",allocationSize=1)
@@ -149,5 +150,16 @@ public class Person {
         this.password = password;
     }
 
+
+
+    /*****password*****/
+    @Column(name = "email")
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
 
 }
