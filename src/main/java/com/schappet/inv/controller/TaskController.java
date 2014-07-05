@@ -43,6 +43,14 @@ public class TaskController extends AbstractInvController {
         model.addAttribute("taskList",invDaoService.getTaskService().list());
         return new ModelAndView("inv/task/list_alt", model);
     }
+    
+    
+    @RequestMapping(value = "mylist.html", method = RequestMethod.GET)
+    public ModelAndView myTasks() {
+        ModelMap model = new ModelMap();
+        model.addAttribute("taskList",invDaoService.getTaskService().listByUsername(getUsername()));
+        return new ModelAndView("/inv/task/mylist", model);
+    }
 
     @RequestMapping(value = "list.html", method = RequestMethod.GET)
     public ModelAndView list() {
@@ -201,6 +209,7 @@ public class TaskController extends AbstractInvController {
         Task task = new Task();
         model.addAttribute("task",task);
         model.addAttribute("propertyList",invDaoService.getPropertyService().list());
+        model.addAttribute("personList",invDaoService.getPersonService().list());
         return new ModelAndView("inv/task/edit",model);
     }
 
@@ -223,7 +232,10 @@ public class TaskController extends AbstractInvController {
 
     @RequestMapping(value = "save.html", method = RequestMethod.POST)
     public String save(@RequestParam("property.propertyId") Integer property_propertyId, @ModelAttribute("task") Task task) {
-        task.setProperty(invDaoService.getPropertyService().findById(property_propertyId));
+    	task.setCreated(new Date());
+    	task.setCreatedBy(getUsername());
+    	
+    	task.setProperty(invDaoService.getPropertyService().findById(property_propertyId));
         invDaoService.getTaskService().saveOrUpdate(task);
         return "redirect:/inv/task/list.html";
     }

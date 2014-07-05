@@ -1,12 +1,17 @@
 package com.schappet.inv.dao;
 
 import edu.uiowa.icts.spring.*;
+
 import com.schappet.inv.domain.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Order;
+
 import edu.uiowa.icts.util.SortColumn;
+
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.logging.Log;
 import org.springframework.stereotype.Repository;
@@ -30,5 +35,15 @@ public class TaskHome extends GenericDao<Task> implements TaskService {
     public Task findById(Integer id) {
         return (Task)this.sessionFactory.getCurrentSession().get(getDomainName(), id);
     }
+
+	@Override
+	public List<Task> listByUsername(String username) {
+		
+	     Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Task.class);
+	        criteria.add(Restrictions.eq("assignedTo", username));
+	        criteria.addOrder(Order.desc("deadline"));
+	        criteria.setMaxResults(5);
+	        return criteria.list();
+	  	}
 
 }

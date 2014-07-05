@@ -30,7 +30,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" >
         <property name="mappings">
             <props>
                 <prop key="/**/*.html">viewController</prop>

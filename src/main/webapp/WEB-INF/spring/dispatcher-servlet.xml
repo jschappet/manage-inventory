@@ -17,7 +17,7 @@
        					   http://www.springframework.org/schema/mvc 
        					   http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
-	<mvc:annotation-driven />
+	<mvc:annotation-driven  />
 	<context:annotation-config/>
    	<context:component-scan base-package="com.schappet" />
    	
@@ -34,15 +34,13 @@
 		<property name="maxUploadSize" value="104857600" />
 	</bean>
    	
-   	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" p:order="0" />
+   	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" p:order="1" />
  	<bean id="authenticationHandler" class="edu.uiowa.icts.authentication.AuthHandle"/>
 	<bean id="logoutHandler" class="edu.uiowa.icts.authentication.LogoutHandle"/>
 
  	<import resource="view-context.xml" />
 	<import resource="postgres-context.xml" />
   	<import resource="liquibase.xml" /> 
+<!--  	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->
  	
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-	
 </beans>

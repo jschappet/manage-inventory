@@ -82,7 +82,7 @@ public class CustomizedTilesView extends AbstractUrlBasedView {
 
 		if(container.isValidDefinition(inputString, request, response))
 		{
-			logger.debug("Provided input string maps to a valid tiles definition");			
+			//logger.debug("Provided input string maps to a valid tiles definition");			
 			defName=inputString;
 		}
 		else
@@ -103,7 +103,13 @@ public class CustomizedTilesView extends AbstractUrlBasedView {
 				}
 				
 				path = getUrl().replaceFirst(defName+tilesDefinitionDelimiter, "");
-				logger.debug("Using specified template "+defName+ " with body "+path);
+				
+				if (path.contains("//")) {
+				//	logger.info("1 matched: " + path);
+					path = path.replace("//", "/");
+					//logger.info("new path: " + path);
+				} 
+				// logger.info("Using specified template "+defName+ " with body "+path);
 
 			}
 			/*
@@ -112,35 +118,41 @@ public class CustomizedTilesView extends AbstractUrlBasedView {
 			 */
 			else {
 				path=getUrl();
-				logger.debug("Using default template "+defName+ " with body "+path);
+				if (path.contains("//")) {
+					//logger.info("2 matched: " + path);
+					path = path.replace("//", "/");
+					//logger.info("new path: " + path);
+				} 
+				//logger.debug("Using default template "+defName+ " with body "+path);
 			}
 			
 			if(fallbackToGeneratedJSP) {
-				logger.debug("Use fall back, enabled");
+				//logger.debug("Use fall back, enabled");
 				String root = servletContext.getRealPath("/");
 				File f = new File(root+path);
 
 				if (!f.exists()) {
-					logger.debug("File does not exist, checking for generated");
+					//logger.debug("File does not exist, checking for generated");
 					String temppath = path.replaceFirst("/WEB-INF/jsp", "/WEB-INF/jsp-generated");
 					f = new File(root+temppath);
 
 					if (f.exists()) {
-						logger.debug("Generated file exists, using as fall back");
+						//logger.debug("Generated file exists, using as fall back");
 						path = temppath;
 					} else {
-						logger.error("File not found, sending 404");
+						//logger.error("File not found, sending 404");
 						request.setAttribute("javax.servlet.error.request_uri", path);
 						request.setAttribute("javax.servlet.error.exception", new MappingNotFoundException("Mapping not found "+path));
 						return;
 					}
 				}
 			} else {
-				logger.debug("File Exists");
+				//logger.debug("File Exists");
 			}
 
 			//create tiles body attribute  
 			Attribute attr = new Attribute();
+			
 			attr.setValue(path);
 			AttributeContext attributeContext = container.startContext(request, response);
 			attributeContext.putAttribute(tilesBodyAttributeName, attr);

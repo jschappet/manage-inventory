@@ -8,14 +8,17 @@
 		<tiles:insertAttribute name="head" />
 	</head>
 	<body>
+	
 		<tiles:insertAttribute name="nav" />
 		<tiles:insertAttribute name="branding" />
 		<div class="container-fluid" id="container">
-			<hr/>
 			<div class="row-fluid" id="body">
 				<div class="span2">
-					<div class="well sidebar-nav">
+					<div class="well sidebar-nav hidden-phone">
 						<tiles:insertAttribute name="menu" />
+					</div>
+					<div class="well sidebar-nav visible-phone hidden-desktop hidden-tablet">
+						<tiles:insertAttribute name="small_menu" />
 					</div>
 				</div>
 				<div class="span10">

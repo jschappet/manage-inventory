@@ -3,7 +3,7 @@
 <hr/>
 
 <footer>
-	<div class="well">
+	<div class="well hidden-phone">
 		<div class="row-fluid">
 			<div class="span2">
 				<ul class="unstyled">

@@ -1,9 +1,12 @@
 package com.schappet.inv.dao;
 
 import edu.uiowa.icts.spring.*;
+
 import com.schappet.inv.domain.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import edu.uiowa.icts.util.SortColumn;
 
 /**
@@ -12,4 +15,6 @@ import edu.uiowa.icts.util.SortColumn;
  */
 public interface TaskService extends GenericDaoInterface<Task> {
     public Task  findById(Integer id);
+
+	public List<Task> listByUsername(String username);
 }

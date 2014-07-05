@@ -13,7 +13,7 @@
 			<c:url value="/index.html" var="indexUrl"/>
 			<a class="brand" href="${ indexUrl }">Inventory</a>
 			
-			<div class="btn-group pull-right">
+			<div class="btn-group pull-right hidden-phone">
 				<sec:authorize access="!isAuthenticated()">
 					<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
 						&nbsp;Welcome&nbsp;<span class="caret"></span>
@@ -40,6 +40,8 @@
 				<ul class="nav">
 					<li><a href="<c:url value="/index.html" />">Home</a></li>
 					<li><a href="<c:url value="/contact.html" />">Contact</a></li>
+					<li><a href="<c:url value="/profile.html" />">Profile</a></li>
+					
 					<li><a href="<c:url value="/faq.html" />">FAQ</a></li>
 					<%-- 
 					<li><a href="<c:url value="/about.html" />">About</a></li>
