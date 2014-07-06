@@ -52,7 +52,7 @@ public class TaskController extends AbstractInvController {
         return new ModelAndView("/inv/task/mylist", model);
     }
 
-    @RequestMapping(value = "list.html", method = RequestMethod.GET)
+    @RequestMapping(value = "list", method = RequestMethod.GET)
     public ModelAndView list() {
         return new ModelAndView("inv/task/list");
     }
