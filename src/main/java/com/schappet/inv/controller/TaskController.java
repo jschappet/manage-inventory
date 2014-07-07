@@ -37,7 +37,7 @@ public class TaskController extends AbstractInvController {
 
     private static final Log log = LogFactory.getLog(TaskController.class);
 
-    @RequestMapping(value = "list_alt.html", method = RequestMethod.GET)
+    @RequestMapping(value = "list_alt", method = RequestMethod.GET)
     public ModelAndView listNoScript() {
         ModelMap model = new ModelMap();
         model.addAttribute("taskList",invDaoService.getTaskService().list());
@@ -45,7 +45,7 @@ public class TaskController extends AbstractInvController {
     }
     
     
-    @RequestMapping(value = "mylist.html", method = RequestMethod.GET)
+    @RequestMapping(value = "mylist", method = RequestMethod.GET)
     public ModelAndView myTasks() {
         ModelMap model = new ModelMap();
         model.addAttribute("taskList",invDaoService.getTaskService().listByUsername(getUsername()));
@@ -57,7 +57,7 @@ public class TaskController extends AbstractInvController {
         return new ModelAndView("inv/task/list");
     }
 
-    @RequestMapping(value = "datatable.html", method = RequestMethod.GET)
+    @RequestMapping(value = "datatable", method = RequestMethod.GET)
     public void datatable( HttpServletRequest request, HttpServletResponse response, 
         @RequestParam(value="iDisplayLength") Integer limit, 
         @RequestParam(value="iDisplayStart") Integer start, 
@@ -160,9 +160,9 @@ public class TaskController extends AbstractInvController {
                     } else if( "urls".equals(column)) {
                         urls = "";
                         if("list".equals(display)){
-                            urls += "<a href=\"show.html?"+"taskId="+task.getTaskId()+"\">[view]</a>";
-                            urls += "<a href=\"edit.html?"+"taskId="+task.getTaskId()+"\">[edit]</a>";
-                            urls += "<a href=\"delete.html?"+"taskId="+task.getTaskId()+"\">[delete]</a>";
+                            urls += "<a href=\"show?"+"taskId="+task.getTaskId()+"\">[view]</a>";
+                            urls += "<a href=\"edit?"+"taskId="+task.getTaskId()+"\">[edit]</a>";
+                            urls += "<a href=\"delete?"+"taskId="+task.getTaskId()+"\">[delete]</a>";
                         } else {
 
                         }
@@ -203,7 +203,7 @@ public class TaskController extends AbstractInvController {
         }
     }
 
-    @RequestMapping(value = "add.html", method = RequestMethod.GET)
+    @RequestMapping(value = "add", method = RequestMethod.GET)
     public ModelAndView add() {
         ModelMap model = new ModelMap();
         Task task = new Task();
@@ -213,7 +213,7 @@ public class TaskController extends AbstractInvController {
         return new ModelAndView("inv/task/edit",model);
     }
 
-    @RequestMapping(value = "edit.html", method = RequestMethod.GET)
+    @RequestMapping(value = "edit", method = RequestMethod.GET)
     public ModelAndView edit(@RequestParam("taskId") Integer taskId) {
         ModelMap model = new ModelMap();
         model.addAttribute("propertyList",invDaoService.getPropertyService().list());
@@ -222,7 +222,7 @@ public class TaskController extends AbstractInvController {
         return new ModelAndView("inv/task/edit",model);
     }
 
-    @RequestMapping(value = "show.html", method = RequestMethod.GET)
+    @RequestMapping(value = "show", method = RequestMethod.GET)
     public ModelAndView show(@RequestParam("taskId") Integer taskId) {
         ModelMap model = new ModelMap();
         Task task = invDaoService.getTaskService().findById(taskId);
@@ -230,20 +230,20 @@ public class TaskController extends AbstractInvController {
         return new ModelAndView("inv/task/show",model);
     }
 
-    @RequestMapping(value = "save.html", method = RequestMethod.POST)
+    @RequestMapping(value = "save", method = RequestMethod.POST)
     public String save(@RequestParam("property.propertyId") Integer property_propertyId, @ModelAttribute("task") Task task) {
     	task.setCreated(new Date());
     	task.setCreatedBy(getUsername());
     	
     	task.setProperty(invDaoService.getPropertyService().findById(property_propertyId));
         invDaoService.getTaskService().saveOrUpdate(task);
-        return "redirect:/inv/task/list.html";
+        return "redirect:/inv/task/list";
     }
 
-    @RequestMapping(value = "delete.html", method = RequestMethod.GET)
+    @RequestMapping(value = "delete", method = RequestMethod.GET)
     public String delete(@RequestParam("taskId") Integer taskId) {
         Task task = invDaoService.getTaskService().findById(taskId);
         invDaoService.getTaskService().delete(task);
-        return "redirect:/inv/task/list.html";
+        return "redirect:/inv/task/list";
     }
 }
