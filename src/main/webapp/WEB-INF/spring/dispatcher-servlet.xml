@@ -43,6 +43,7 @@
  	<import resource="view-context.xml" />
 	<import resource="postgres-context.xml" />
   	<import resource="liquibase.xml" /> 
+  	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
  	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
  	
 </beans>
