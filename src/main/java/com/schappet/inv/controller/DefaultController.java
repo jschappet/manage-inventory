@@ -108,7 +108,7 @@ public class DefaultController extends AbstractInvController {
 		return new ModelAndView("message",model);
 	}
 	
-	@RequestMapping(value = "index.html", method = RequestMethod.GET)
+	@RequestMapping(value = {"/","index.html"}, method = RequestMethod.GET)
 	public ModelAndView index( HttpServletRequest request, @RequestParam(value="error", required=false) String error, @RequestParam(value="info", required=false) String info) {
 		ModelMap model = new ModelMap();
 		Message message = invDaoService.getMessageService().getCurrentMessage("main.index");
