@@ -1,6 +1,9 @@
+@media (min-width: 980px) {
+
  body {
     padding-top: 60px;
   }
+ }
 
 #application_logo {
 	margin-top: 50px;
@@ -17,18 +20,3 @@ table.dataTable {
 div.dataTables_wrapper {
 	margin-top: 10px;
 }
-
-
-/*
- * Responsive stypes
- */
-@media (max-width: 980px) {
-
-  body > .container {
-    padding-top: 0;
-  }
-  .navbar-fixed-top {
-    margin-bottom: 0;
-  }
-
-} /* END: @media (max-width: 980px) */
