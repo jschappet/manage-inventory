@@ -40,9 +40,10 @@
  	<bean id="authenticationHandler" class="edu.uiowa.icts.authentication.AuthHandle"/>
 	<bean id="logoutHandler" class="edu.uiowa.icts.authentication.LogoutHandle"/>
 
- 	<import resource="view-context.xml" />
-	<import resource="postgres-context.xml" />
-  	<import resource="liquibase.xml" />
+	<import resource="classpath:spring/security-context.xml" />
+ 	<import resource="classpath:spring/view-context.xml" />
+	<import resource="classpath:spring/postgres-context.xml" />
+  	<import resource="classpath:spring/liquibase.xml" />
   	 
 <!--   	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" /> -->
  	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
