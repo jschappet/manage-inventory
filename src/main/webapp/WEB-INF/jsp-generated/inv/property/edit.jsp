@@ -34,7 +34,7 @@
 
         
         <label for="location.locationId">Location</label>
-        <form:select path="location.locationId" items="${locationList}" itemValue="locationId" itemLabel="name"/>
+        <form:select path="location.locationId" items="${locationList}" itemValue="locationId" itemLabel="locationId"/>
         <br/>
 
         

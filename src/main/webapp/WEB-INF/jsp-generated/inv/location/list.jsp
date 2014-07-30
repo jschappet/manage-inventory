@@ -25,6 +25,7 @@
     cols.push({ "sName": "city", "sTitle":"City",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "state", "sTitle":"State",	"sClass":"", "bSortable":true, "bSearchable": true });
     cols.push({ "sName": "zipCode", "sTitle":"ZipCode",	"sClass":"", "bSortable":true, "bSearchable": true });
+    cols.push({ "sName": "propertys", "sTitle":"Propertys",	"sClass":"", "bSortable":false, "bSearchable": false });
     cols.push({ "sName": "urls", "sTitle":"", "sClass":"", "bSortable":false, "bSearchable": false });
     setDataTable({
         id : 'locationTable',
