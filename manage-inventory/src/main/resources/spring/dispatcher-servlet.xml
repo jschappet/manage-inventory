@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:aop="http://www.springframework.org/schema/aop" 
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context 
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx 
+						   http://www.springframework.org/schema/tx/spring-tx.xsd
+       					   http://www.springframework.org/schema/aop 
+       					   http://www.springframework.org/schema/aop/spring-aop.xsd
+       					   http://www.springframework.org/schema/mvc 
+       					   http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       					   
+       					   
+    <context:property-placeholder location="classpath:config/*.properties,file:/home/jetty/manage-inventory/props/*.properties"/>
+	
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources/ directory -->
+	<mvc:resources mapping="/resources/**" location="/resources/" order="0" />
+	<mvc:interceptors>
+   		<mvc:interceptor>
+    		<mvc:mapping path="/resources/**" />
+    		<bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+    		    <!-- expire JS and CSS after a specified amount of time, see cache.properties.example -->
+        		<property name="cacheSeconds" value="${cache.seconds}" />
+        		<property name="alwaysMustRevalidate" value="${always.must.revalidate}" />
+        		<property name="useExpiresHeader" value="true" />
+        		<property name="useCacheControlHeader" value="true" />
+        		<property name="useCacheControlNoStore" value="true" />
+        		<property name="requireSession" value="false" />
+    		</bean>
+   		</mvc:interceptor>
+	</mvc:interceptors>
+	
+    <mvc:annotation-driven ignore-default-model-on-redirect="true" />
+    
+	<context:annotation-config />
+	
+   	<context:component-scan base-package="edu.uiowa.icts" />
+   	<context:component-scan base-package="edu.uiowa.icts.spring.ldap" />
+   	   	
+   	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+   	<import resource="classpath:spring/datasource-context.xml" />
+   	<import resource="classpath:spring/tiles-context.xml" />
+   	<import resource="classpath:spring/authentication-context.xml" />
+   	<import resource="classpath:spring/security-context.xml" />
+   	
+	<!-- 2GB max upload -->
+   	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+   		<property name="maxUploadSize" value="2000000000" />
+   	</bean>
+   	
+</beans>
