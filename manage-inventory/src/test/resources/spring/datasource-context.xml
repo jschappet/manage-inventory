@@ -27,7 +27,7 @@
 	<bean id="createSchema" class="edu.uiowa.icts.spring.HsqlCreateSchema"  init-method="create">
 		<property name="schemas">
 			<list>
-				<value>manage-inventory</value>
+				<value>inv</value>
 			</list>
 		</property>
 		<property name="url">

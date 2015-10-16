@@ -32,8 +32,8 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp" />
 	</definition>
  	
- 	<definition name="/manage-inventory/*/*" extends="baseTemplate">
-		<put-attribute name="body" value="/WEB-INF/jsp/manage-inventory/{1}/{2}.jsp" />
+ 	<definition name="/inv/*/*" extends="baseTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/inv/{1}/{2}.jsp" />
 	</definition>
 	
 </tiles-definitions>

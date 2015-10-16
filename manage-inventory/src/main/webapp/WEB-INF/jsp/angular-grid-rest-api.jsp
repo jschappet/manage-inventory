@@ -4,8 +4,8 @@
 <div ng-controller="GridController" id="gridParent">
   <div class="panel panel-default">
 	  <div class="panel-heading">
-	  	<button type="button" class="btn btn-primary" ng-click="addRow()">Add Row</button>
-		<button type="button" class="btn btn-primary" ng-click="deleteSelected()">Delete Selected</button>
+	  	<button type="button" class="btn btn-primary" ng-click="addRow()">Add ${param.resourceName}</button>
+		<button type="button" class="btn btn-primary" ng-click="deleteSelected()">Delete Selected ${param.resourceName}</button>
 	  </div>
       <div class="panel-body alert" ng-show="alertMessage" ng-class="{ 'alert-success' : resourceSuccessful, 'alert-danger' : !resourceSuccessful }" role="alert">{{alertMessage}}</div>
   </div>	

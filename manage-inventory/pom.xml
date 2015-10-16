@@ -26,7 +26,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tiles.version>3.0.5</tiles.version>
 		<jetty.version>9.2.10.v20150310</jetty.version>
-		<spring.utils.version>2.0.9</spring.utils.version>
+		<spring.utils.version>2.0.11</spring.utils.version>
 		<spring.security.version>4.0.1.RELEASE</spring.security.version>
 		<hibernate.version>4.3.9.Final</hibernate.version>
 		<postgres.version>9.3-1101-jdbc4</postgres.version>
@@ -162,6 +162,13 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- spring end -->
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+		
 
 		<!-- tiles -->
 		<dependency>
@@ -490,7 +497,7 @@
 			</build>
 		</profile>
 		<profile>
-			<id>BuildDatabase</id>
+			<id>CleanDatabase</id>
 			<build>
 				<resources>
 					<resource>
@@ -518,11 +525,28 @@
 								</goals>
 								<configuration>
 									<onError>continue</onError>
-									<sqlCommand>CREATE SCHEMA ${database.schema}</sqlCommand>
+									<delimiter>;</delimiter>
+									<sqlCommand>DROP SCHEMA inv cascade</sqlCommand>
+									
+									
 								</configuration>
 							</execution>
+							
 							<execution>
+								<id>deleteFromChangeLog</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<onError>continue</onError>
+									<delimiter>;</delimiter>
+									<sqlCommand>DELETE FROM public.databasechangelog where contexts='INV_BUILD'</sqlCommand>
+									
+									
+								</configuration>
 							</execution>
+							
 						</executions>
 						<dependencies>
 							<dependency>
@@ -536,30 +560,6 @@
 								<version>2.3.2</version>
 							</dependency>
 						</dependencies>
-					</plugin>
-					<plugin>
-						<groupId>org.liquibase</groupId>
-						<artifactId>liquibase-maven-plugin</artifactId>
-						<version>3.2.2</version>
-						<executions>
-							<execution>
-								<id>liquibase-run</id>
-								<phase>process-resources</phase>
-								<configuration>
-									<changeLogFile>${database.changelog.file}</changeLogFile>
-									<driver>${database.driver}</driver>
-									<url>${database.liquibase.url}</url>
-									<username>${database.username}</username>
-									<password>${database.password}</password>
-									<defaultSchemaName>${database.schema}</defaultSchemaName>
-									<dropFirst>false</dropFirst>
-									<promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
-								</configuration>
-								<goals>
-									<goal>update</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
