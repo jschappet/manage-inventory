@@ -45,6 +45,7 @@ public class TaskResourceMvcTest extends AbstractControllerMVCTests {
               // add 20 records to test database
         for(int x=1; x<21; x++){
         	Task task = new Task();
+        	task.setAssignedTo("null");
         	invDaoService.getTaskService().save(task);
 	        if (x == 1){
 	        	// use this ID for update, show, and delete assertions

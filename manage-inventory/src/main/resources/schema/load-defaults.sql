@@ -8,3 +8,7 @@ insert into inv.person_role (person_role_id, person_id, role_id) values (nextval
 insert into inv.person_role (person_role_id, person_id, role_id) values (nextval('inv.seqnum'),10, 30);
 insert into inv.person_role (person_role_id, person_id, role_id) values (nextval('inv.seqnum'),11, 20);
 insert into inv.person_role (person_role_id, person_id, role_id) values (nextval('inv.seqnum'),11, 30);
+
+
+insert into inv.location (location_id,name) values (nextval('inv.seqnum'), 'Demo Location');
+insert into inv.property (property_id,name, description,created_by, created, location_id) values (nextval('inv.seqnum'), 'Demo Property','Demo Property','INSTALL',now(), 35);

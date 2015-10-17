@@ -30,6 +30,8 @@ public class TaskHome extends GenericDao<Task> implements TaskService {
 	
 	public List<Task> listByPerson(String username) {
 	     Criteria criteria = this.sessionFactory.getCurrentSession().createCriteria(Task.class);
+	     if (username == null) 
+	    	 username="null";
 	     criteria.add(Restrictions.eq("assignedTo", username));
 	     return criteria.list();
 	}
