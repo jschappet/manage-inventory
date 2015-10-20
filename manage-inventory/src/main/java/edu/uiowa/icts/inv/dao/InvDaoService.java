@@ -66,4 +66,19 @@ public class InvDaoService {
         return personRoleService;
     }
 
+    
+	@Autowired
+	private WorkLogService workLogService;
+
+    public WorkLogService getWorkLogService() {
+        return workLogService;
+    }
+
+	@Autowired
+	private TaskTypeService taskTypeService;
+
+    public TaskTypeService getTaskTypeService() {
+        return taskTypeService;
+    }
+
 }
