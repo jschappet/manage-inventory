@@ -45,7 +45,11 @@ public class TaskController extends AbstractInvController {
     }
 
     @RequestMapping( value = { "list", "", "/" }, method = RequestMethod.GET )
-    public String list() {
+    public String list( ModelMap model) {
+        model.addAttribute( "task", new Task() );
+ 		model.addAttribute( "propertyList", invDaoService.getPropertyService().list() );
+ 		model.addAttribute( "taskTypeList", invDaoService.getTaskTypeService().list() );
+
         return "/inv/task/list";
     }
 

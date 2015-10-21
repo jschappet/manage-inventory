@@ -137,7 +137,7 @@
 </table>
 <table alias="" name="property" remarks="" uid="6162e413:146af1c9cdc:-7ff0">
 <table-description/>
-<table-figure-bounds height="232" width="187" x="459" y="124"/>
+<table-figure-bounds height="232" width="187" x="533" y="124"/>
 <column-list>
 <column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="property_id" remarks="" uid="6162e413:146af1c9cdc:-7fec">
 <column-description/>
@@ -214,7 +214,7 @@
 </table>
 <table alias="" name="task" remarks="" uid="6162e413:146af1c9cdc:-7fe0">
 <table-description/>
-<table-figure-bounds height="276" width="226" x="111" y="374"/>
+<table-figure-bounds height="276" width="226" x="117" y="395"/>
 <column-list>
 <column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="task_id" remarks="" uid="6162e413:146af1c9cdc:-7fdc">
 <column-description/>
@@ -507,7 +507,7 @@
 </table>
 <table alias="" name="work_log" remarks="" uid="282fabe9:1507af6a908:-7ff8">
 <table-description/>
-<table-figure-bounds height="276" width="226" x="205" y="23"/>
+<table-figure-bounds height="276" width="226" x="205" y="0"/>
 <column-list>
 <column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="task_id" remarks="" uid="282fabe9:1507af6a908:-7ff6">
 <column-description/>
@@ -601,7 +601,7 @@
 </table>
 <table alias="" name="task_type" remarks="" uid="282fabe9:1507af6a908:-7fbb">
 <table-description/>
-<table-figure-bounds height="131" width="197" x="-78" y="183"/>
+<table-figure-bounds height="131" width="154" x="38" y="190"/>
 <column-list>
 <column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="type_id" remarks="" uid="282fabe9:1507af6a908:-7fb7">
 <column-description/>

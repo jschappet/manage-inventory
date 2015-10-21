@@ -533,6 +533,21 @@
 							</execution>
 							
 							<execution>
+								<id>dropPersistentLogins</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<onError>continue</onError>
+									<delimiter>;</delimiter>
+									<sqlCommand>DROP TABLE public.persistent_logins</sqlCommand>
+									
+									
+								</configuration>
+							</execution>
+							
+							<execution>
 								<id>deleteFromChangeLog</id>
 								<phase>process-resources</phase>
 								<goals>
