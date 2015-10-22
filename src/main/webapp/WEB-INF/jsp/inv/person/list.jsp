@@ -25,7 +25,7 @@
     columns.push({ "name": "consent", "title":"Consent",	"class":"", "sortable":true, "searchable": true });
     columns.push({ "name": "deleted", "title":"Deleted",	"class":"", "sortable":true, "searchable": true });
     columns.push({ "name": "languageId", "title":"Language Id",	"class":"", "sortable":true, "searchable": true });
-    columns.push({ "name": "password", "title":"Password",	"class":"", "sortable":true, "searchable": true });
+  //  columns.push({ "name": "password", "title":"Password",	"class":"", "sortable":true, "searchable": true });
     columns.push({ "name": "email", "title":"Email",	"class":"", "sortable":true, "searchable": true });
     columns.push({ "name": "personRoles", "title":"Person Roles",	"class":"", "sortable":false, "searchable": false });
     var table = setDataTable({
