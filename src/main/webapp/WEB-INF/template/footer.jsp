@@ -9,7 +9,6 @@
 				<ul class="dropdown-menu">
 					<li class="divider"></li>
 					<li><a target="_blank" title="link opens in new tab/window" href="http://www.schappet.com/">Schappet.com</a></li>
-					
 				</ul>
 			</li>
 			<li class="dropdown">
