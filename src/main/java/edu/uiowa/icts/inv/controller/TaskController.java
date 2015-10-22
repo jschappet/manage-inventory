@@ -1,6 +1,7 @@
 package edu.uiowa.icts.inv.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import edu.uiowa.icts.datatable.DataTable;
 import edu.uiowa.icts.datatable.DataTableColumn;
 import edu.uiowa.icts.datatable.DataTableRequest;
-import edu.uiowa.icts.inv.domain.*;
+import edu.uiowa.icts.inv.domain.Task;
 import edu.uiowa.icts.spring.GenericDaoListOptions;
 
 /**
@@ -156,6 +157,7 @@ public class TaskController extends AbstractInvController {
     @RequestMapping( value = "save", method = RequestMethod.POST )
     public String save(@Valid @ModelAttribute( "task" ) Task task, BindingResult result, Model model ) {
 
+    	
 
 		if (result.hasErrors()) { 
 					model.addAttribute( "propertyList", invDaoService.getPropertyService().list() );
@@ -163,6 +165,12 @@ public class TaskController extends AbstractInvController {
 			return "/inv/task/edit"; 
 		} else {
 			try {
+				if (task.getCreated() == null) {
+					task.setCreated(new Date());
+					task.setCreatedBy(getUsername());
+				}
+				
+				
 				invDaoService.getTaskService().saveOrUpdate( task );
 			} catch (NonUniqueObjectException e) {
 				log.debug("Merging Results");

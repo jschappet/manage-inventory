@@ -13,16 +13,13 @@
 	<jsp:param name="resourceId" value="taskId"/>
 </jsp:include>
 
-<c:url value="/task/add" var="addUrl" />
-<a href="${ addUrl }" class="btn btn-default">Add</a>
-
-
+<c:url value="/task/save" var="saveUrl" />
 
 <div class="modal fade" role="dialog" id="add_task">
   <div class="modal-dialog">
   
 	
-	<form:form method="post" commandName="task" action="${ addUrl }" role="form">
+	<form:form method="post" commandName="task" action="${ saveUrl }" role="form">
 	<div class="modal-content">
         
 	
