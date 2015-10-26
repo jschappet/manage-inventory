@@ -507,7 +507,7 @@
 </table>
 <table alias="" name="work_log" remarks="" uid="282fabe9:1507af6a908:-7ff8">
 <table-description/>
-<table-figure-bounds height="276" width="226" x="205" y="0"/>
+<table-figure-bounds height="276" width="226" x="268" y="-31"/>
 <column-list>
 <column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="true" name="task_id" remarks="" uid="282fabe9:1507af6a908:-7ff6">
 <column-description/>
@@ -573,6 +573,12 @@
 <column-description/>
 <data-type jdbc-type="4" name="INT" selected-variant-pattern="INT">
 <variant type-name-pattern="INT"/>
+</data-type>
+</column>
+<column alias="" auto-increment="false" column-size="0" decimal-digits="0" default-value="" mandatory="false" name="note" remarks="" uid="3b58d2cb:150a651da8c:-7ff4">
+<column-description/>
+<data-type jdbc-type="-1" literal-prefix="'" literal-suffix="'" name="TEXT" selected-variant-pattern="TEXT">
+<variant type-name-pattern="TEXT"/>
 </data-type>
 </column>
 </column-list>

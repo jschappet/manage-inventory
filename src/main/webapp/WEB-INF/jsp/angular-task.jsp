@@ -5,6 +5,8 @@
   <div class="panel panel-default">
 	  <div class="panel-heading">
 	   	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add_task">Add ${param.resourceName}</button>
+	   	
+	   	<button type="button" class="btn btn-primary" ng-click="completeSelected()">Complete Selected ${param.resourceName}</button>
 		<button type="button" class="btn btn-primary" ng-click="deleteSelected()">Delete Selected ${param.resourceName}</button>
 	  </div>
       <div class="panel-body alert" ng-show="alertMessage" ng-class="{ 'alert-success' : resourceSuccessful, 'alert-danger' : !resourceSuccessful }" role="alert">{{alertMessage}}</div>
@@ -60,6 +62,14 @@ var app = angular.module('gridDisplay', ['ngResource', 'ui.grid','ui.grid.resize
 	  	    });
 	  	}
   	};
+  	
+  	$scope.completeSelected = function() {
+  		$( '#complete_task' ).modal( 'show' );
+  		var rows = $scope.gridApi.selection.getSelectedRows($scope.gridModel);
+	    //$( '#hiddenTaskId').value(rows[0]);
+	    console.log(rows[0].taskId);
+  	};
+  	
   	// dynyamically change grid height relative to window height
   	$scope.getTableHeight = function() {
         return {
