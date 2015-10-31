@@ -9,14 +9,14 @@
 			</button>
 			
 			<c:url value="/" var="indexUrl" />
-			<a class="navbar-brand" href="${ indexUrl }">manage-inventory</a>
+			<a class="navbar-brand" href="${ indexUrl }">Manage Inventory</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="<c:url value="/contact" />">Contact</a></li>
-				<li><a href="<c:url value="/faq" />">FAQ</a></li>
+				<li><a href="<c:url value="/task/list" />">Task List</a></li>
+				<li><a href="<c:url value="/property/list" />">Properties</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
@@ -30,12 +30,12 @@
 					</ul>
 				</li>
 			</ul>
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>
+<!-- 			<form class="navbar-form navbar-left" role="search"> -->
+<!-- 				<div class="form-group"> -->
+<!-- 					<input type="text" class="form-control" placeholder="Search"> -->
+<!-- 				</div> -->
+<!-- 				<button type="submit" class="btn btn-default">Submit</button> -->
+<!-- 			</form> -->
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
