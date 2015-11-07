@@ -101,6 +101,7 @@ CREATE TABLE inv.work_log (
      , deadline TIMESTAMP NOT NULL
      , completed TIMESTAMP
      , property_id INT NOT NULL
+     , note TEXT
      , PRIMARY KEY (task_id)
      , CONSTRAINT FK_work_log_1 FOREIGN KEY (property_id)
                   REFERENCES inv.property (property_id)

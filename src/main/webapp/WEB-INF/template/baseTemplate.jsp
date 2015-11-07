@@ -14,14 +14,15 @@
 		<tiles:insertAttribute name="nav" />
 		<div class="container-fluid" id="container">
 			<div class="row" id="body">
-				<div class="col-md-2">
+				<div class="col-md-10 col-lg-10">
+					<tiles:insertAttribute name="body" />
+				</div>
+				<div class="col-md-2 col-lg-2 col-xs-12">
 					<div class="sidebar-nav">
 						<tiles:insertAttribute name="menu" />
 					</div>
 				</div>
-				<div class="col-md-10">
-					<tiles:insertAttribute name="body" />
-				</div>
+				
 			</div>
 			<div  id="footer">
 					<tiles:insertAttribute name="footer" />

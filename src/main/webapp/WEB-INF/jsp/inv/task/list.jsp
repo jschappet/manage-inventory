@@ -11,9 +11,11 @@
 	<jsp:param name="restApiUrl" value="/api"/>
 	<jsp:param name="resourceName" value="task"/>
 	<jsp:param name="resourceId" value="taskId"/>
+	<jsp:param name="whos" value="/"/>
 </jsp:include>
 
 <c:url value="/task/save" var="saveUrl" />
+<c:url value="/task/complete" var="completeUrl" />
 
 <div class="modal fade" role="dialog" id="add_task">
   <div class="modal-dialog">
@@ -94,5 +96,50 @@
 		</div>
 		</div>
 	</form:form>
+	</div>
+</div>
+
+
+
+
+
+<div class="modal fade" role="dialog" id="complete_task">
+  <div class="modal-dialog">
+  
+	
+	<form method="post"  action="${ completeUrl }" role="form">
+	<div class="modal-content">
+        
+		<input type="hidden" name="taskId"  id="hiddenTaskId" value="" />
+		<div class="modal-header">
+			<h3>Add New Task</h3>
+		</div>
+		<div class="modal-body">
+
+		
+    		<fieldset>
+    		
+    			<legend>Task</legend>
+   
+      			        
+	     			<div class="form-group ${status.error ? 'has-error' : ''}">
+	      				<label for="note" class="control-label">Notes</label>
+    					<textarea  name="notes"  class="form-control medium" ></textarea>
+    					
+    	     		</div>
+				
+    
+    
+      			
+    		</fieldset>
+		
+		</div>
+	
+		<div class="modal-footer">
+			<input type="submit" name="submit" value="Complete Task" class="btn btn-success" />
+			<a class="btn btn-primary" data-dismiss="modal">Cancel</a>
+		</div>
+		</div>
+	</form>
 	</div>
 </div>

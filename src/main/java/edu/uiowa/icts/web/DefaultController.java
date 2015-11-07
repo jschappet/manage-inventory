@@ -43,6 +43,11 @@ public class DefaultController {
 	public String indexPage( ModelMap model ) {
 		return "index";
 	}
+	
+	@RequestMapping( value = { "test" } , method = RequestMethod.GET )
+	public String testPage( ModelMap model ) {
+		return "test";
+	}
 
 	@RequestMapping( value = "switch-user" , method = RequestMethod.GET )
 	public String switchUser( ModelMap model, @RequestParam( value = "error" , required = false ) Boolean error ) {
