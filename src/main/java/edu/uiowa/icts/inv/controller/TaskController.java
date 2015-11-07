@@ -28,6 +28,7 @@ import edu.uiowa.icts.datatable.DataTable;
 import edu.uiowa.icts.datatable.DataTableColumn;
 import edu.uiowa.icts.datatable.DataTableRequest;
 import edu.uiowa.icts.inv.domain.Task;
+import edu.uiowa.icts.inv.domain.WorkLog;
 import edu.uiowa.icts.spring.GenericDaoListOptions;
 import edu.uiowa.icts.util.WorkLogManager;
 
@@ -40,9 +41,6 @@ import edu.uiowa.icts.util.WorkLogManager;
 public class TaskController extends AbstractInvController {
 
     private static final Log log = LogFactory.getLog( TaskController.class );
-
-    @Autowired
-    private WorkLogManager wlManager;
     
     @RequestMapping( value = "list_alt", method = RequestMethod.GET )
     public String listNoScript(Model model) {
@@ -59,6 +57,14 @@ public class TaskController extends AbstractInvController {
         return "/inv/task/list";
     }
 
+    @RequestMapping( value = { "mine" }, method = RequestMethod.GET )
+    public String myTasklist( ModelMap model) {
+        model.addAttribute( "task", new Task() );
+ 		model.addAttribute( "propertyList", invDaoService.getPropertyService().list() );
+ 		model.addAttribute( "taskTypeList", invDaoService.getTaskTypeService().list() );
+
+        return "/inv/task/mine";
+    }
      
 	@ResponseBody
 	@RequestMapping( value = "datatable" , produces = "application/json" )
@@ -186,27 +192,44 @@ public class TaskController extends AbstractInvController {
     }
 
     @RequestMapping( value = "complete", method = RequestMethod.POST )
-    public String save(@Valid @ModelAttribute( "task" ) Task task,
+    public String completeTask(
+    		@RequestParam( "taskId" ) Integer taskId,
     		@RequestParam String notes,
-    		BindingResult result, Model model ) {
-
+    		
+    		Model model ) {
+    	log.debug("Starting to complete Task: '" + taskId + "'");
+    	
+    	Task task = null;
+    	try {
+    		task = invDaoService.getTaskService().findById(taskId);	
+    	} catch (Exception e) {
+    		log.error("Error finding TaskId: " + taskId, e);
+    		return "redirect:/task/list";
+    	}
+    	
+    	
+    	log.debug("Task TaskType: " + task.getTaskType());
+    	
     	
 
-		if (result.hasErrors()) { 
-					model.addAttribute( "propertyList", invDaoService.getPropertyService().list() );
-
-			return "/inv/task/edit"; 
-		} else {
 			try {
-				wlManager.setTask(task);
-				wlManager.completeTask(getUsername(), notes);
+				
+				
+				WorkLog wl = WorkLogManager.completeTask(task, getUsername(), notes);
+				try {
+					
+					invDaoService.getWorkLogService().save(wl);
+					invDaoService.getTaskService().delete(task);
+				} catch (Exception e) {
+					log.error("Could not complete task", e);
+				}
 				log.debug("Completed Task");
 				
 			} catch (NonUniqueObjectException e) {
 				log.debug("Merging Results");
 				invDaoService.getTaskService().merge( task );
 			}
-		}
+
 		return "redirect:/task/list";
     }
 

@@ -74,13 +74,14 @@ public class TaskResource extends AbstractInvApiResource {
     
     @RequestMapping( value = {  "", "/"  }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
     public List<Task> list() {
-    	log.debug("Username: " + getUsername());
-    	 return invDaoService.getTaskService().listByPerson(getUsername());
+    	
+    	 return invDaoService.getTaskService().list();
     	//return invDaoService.getTaskService().list();
     }
     
     @RequestMapping( value = {  "mine"  }, method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
     public List<Task> myList() {
+    	log.debug("My Task List Username: " + getUsername());
     	 return invDaoService.getTaskService().listByPerson(getUsername());
     }
 

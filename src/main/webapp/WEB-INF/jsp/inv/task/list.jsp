@@ -11,6 +11,7 @@
 	<jsp:param name="restApiUrl" value="/api"/>
 	<jsp:param name="resourceName" value="task"/>
 	<jsp:param name="resourceId" value="taskId"/>
+	<jsp:param name="whos" value="/"/>
 </jsp:include>
 
 <c:url value="/task/save" var="saveUrl" />

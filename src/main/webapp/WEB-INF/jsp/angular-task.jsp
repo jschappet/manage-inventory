@@ -11,13 +11,14 @@
 	  </div>
       <div class="panel-body alert" ng-show="alertMessage" ng-class="{ 'alert-success' : resourceSuccessful, 'alert-danger' : !resourceSuccessful }" role="alert">{{alertMessage}}</div>
   </div>	
-  <div id="gridId" ui-grid="gridModel" ui-grid-edit ui-grid-auto-resize ui-grid-selection external-scopes="$scope" ng-style="getTableHeight()"></div>
+   <div id="gridId" ui-grid="gridModel" ui-grid-edit ui-grid-auto-resize ui-grid-selection external-scopes="$scope" ng-style="getTableHeight()"></div>
+ 
 </div>
 <script>
 var app = angular.module('gridDisplay', ['ngResource', 'ui.grid','ui.grid.resizeColumns', 'ui.grid.selection', 'ui.grid.autoResize','ui.grid.expandable', 'ui.grid.edit'])
 				 .controller('GridController', ['$scope', '$resource', 'uiGridConstants',  function ($scope, $resource, uiGridConstants) {
 	
-	var ResourceService = $resource('<c:url value="${param.restApiUrl}/${param.resourceName}/:id" />',  { id: '@${param.resourceId}' });
+	var ResourceService = $resource('<c:url value="/api/task/${param.whos}/:id" />',  { id: '@${param.resourceId}' });
 	// how to load an individual object by id...
 /* 	ResourceService.get({id:41}, function(${param.resourceName}) {
 		console.log(${param.resourceName});
@@ -27,6 +28,7 @@ var app = angular.module('gridDisplay', ['ngResource', 'ui.grid','ui.grid.resize
 	// load data into Grid
 	$scope.gridModel.data = ResourceService.query();
 	// update data inline
+	
 	$scope.gridModel.onRegisterApi = function(gridApi){
         //set gridApi on scope
         $scope.gridApi = gridApi;
@@ -42,6 +44,7 @@ var app = angular.module('gridDisplay', ['ngResource', 'ui.grid','ui.grid.resize
   	      });
         });
       };
+      
     // add a row
     $scope.addRow = function() {
     	$( '#add_task' ).modal( 'show' );
@@ -66,7 +69,7 @@ var app = angular.module('gridDisplay', ['ngResource', 'ui.grid','ui.grid.resize
   	$scope.completeSelected = function() {
   		$( '#complete_task' ).modal( 'show' );
   		var rows = $scope.gridApi.selection.getSelectedRows($scope.gridModel);
-	    //$( '#hiddenTaskId').value(rows[0]);
+	    $( '#hiddenTaskId').val(rows[0].taskId);
 	    console.log(rows[0].taskId);
   	};
   	
