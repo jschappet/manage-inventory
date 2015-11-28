@@ -24,6 +24,17 @@
 		<put-attribute name="menu"   value="/WEB-INF/jsp/menu.jsp"/>   
 	</definition>
 
+	<definition name="ngTemplate" template="/WEB-INF/template/ngTemplate.jsp">
+		<put-attribute name="head" value="/WEB-INF/template/head.jsp" />
+		<put-attribute name="roof" value="/WEB-INF/template/roof.jsp" />
+		<put-attribute name="branding" value="/WEB-INF/template/branding.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/template/nav.jsp" />
+		<put-attribute name="roof" value="/WEB-INF/template/roof.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/template/footer.jsp" />
+		<put-attribute name="menu"   value="/WEB-INF/jsp/menu.jsp"/>   
+	</definition>
+
+
 	<definition name="login" extends="baseTemplateWide">
    		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
  	</definition>
@@ -35,5 +46,11 @@
  	<definition name="/inv/*/*" extends="baseTemplate">
 		<put-attribute name="body" value="/WEB-INF/jsp/inv/{1}/{2}.jsp" />
 	</definition>
+	
+ 	<definition name="/ng/*" extends="ngTemplate">
+		<put-attribute name="body" value="/WEB-INF/jsp/ng/{1}.jsp" />
+	</definition>
+	
+	
 	
 </tiles-definitions>

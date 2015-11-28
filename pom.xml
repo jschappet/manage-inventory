@@ -7,17 +7,17 @@
 
 	<name>manage-inventory</name>
 
-	<groupId>edu.uiowa.icts</groupId>
+	<groupId>com.schappet.manage</groupId>
 	<artifactId>manage-inventory</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<url>https://www.icts.uiowa.edu/manage-inventory</url>
+	<url>https://manage.schappet.com</url>
 
 	<!-- open source license -->
 	<organization>
-		<name>University of Iowa Institute for Clinical and Translational Science (ICTS)</name>
-		<url>https://www.icts.uiowa.edu/</url>
+		<url>https://www.schappet.edu/</url>
+		<name>schappet.com</name>
 	</organization>
 	<inceptionYear>2015</inceptionYear>
 	<!-- end open source license -->
@@ -601,4 +601,17 @@
 			</build>
 		</profile>
 	</profiles>
+	<ciManagement>
+		<system>travis-ci</system>
+		<url>https://travis-ci.org/jschappet/manage-inventory</url>
+	</ciManagement>
+	<scm>
+		<url>https://github.com/jschappet/manage-inventory</url>
+		<developerConnection>James Schappet</developerConnection>
+	</scm>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/jschappet/manage-inventory/issues</url>
+	</issueManagement>
+	<description>Simple project to manage inventory items</description>
 </project>
