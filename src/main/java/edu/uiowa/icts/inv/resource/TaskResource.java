@@ -122,6 +122,21 @@ public class TaskResource extends AbstractInvApiResource {
     	
     	if (task.getDone()) {
     		log.debug("task is completed: " +  task.getTaskId() + ": " + task.getName() );
+    		try {
+
+    			WorkLog wl = WorkLogManager.completeTask(task, getUsername(), "TO BE ADDED");
+    			try {
+
+    				invDaoService.getWorkLogService().save(wl);
+    				invDaoService.getTaskService().delete(task);
+    			} catch (Exception e) {
+    				log.error("Could not complete task", e);
+    			}
+    			log.debug("Completed Task");
+    		} catch (NonUniqueObjectException e) {
+    			log.debug("Merging Results");
+    			invDaoService.getTaskService().merge(task);
+    		}
     	}
 		 invDaoService.getTaskService().update( task );
 

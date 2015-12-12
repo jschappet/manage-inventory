@@ -40,6 +40,8 @@ public class Task {
         private String name;
         
         private Boolean done;
+        private String notes;
+        
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date created;
         private String createdBy;
@@ -179,6 +181,15 @@ public class Task {
 
 	public void setDone(Boolean done) {
 		this.done = done;
+	}
+
+	@Transient
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 

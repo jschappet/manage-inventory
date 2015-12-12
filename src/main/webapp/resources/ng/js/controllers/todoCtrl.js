@@ -108,10 +108,16 @@ angular.module('todomvc')
 			if (angular.isDefined(done)) {
 				todo.done = done;
 			}
+			$( '#complete_task' ).modal( 'show' );
+	  		//var rows = $scope.gridApi.selection.getSelectedRows($scope.gridModel);
+		    $( '#hiddenTaskId').val(todo.taskId);
+		    console.log(todo.taskId);
+		    /*
 			store.put(todo, todos.indexOf(todo))
 				.then(function success() {}, function error() {
 					todo.done = !todo.done;
 				});
+				*/
 		};
 
 		$scope.clearCompletedTodos = function () {
