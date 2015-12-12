@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -37,6 +38,10 @@ public class Task {
         private Integer taskId;
         private String taskType;
         private String name;
+        
+        private Boolean done;
+        private String notes;
+        
     @DateTimeFormat( pattern = "yyyy-MM-dd" )
     private Date created;
         private String createdBy;
@@ -168,6 +173,24 @@ public class Task {
     public void setProperty(Property property){
         this.property = property;
     }
+
+    @Transient
+	public Boolean getDone() {
+		return done;
+	}
+
+	public void setDone(Boolean done) {
+		this.done = done;
+	}
+
+	@Transient
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
 
 
 }

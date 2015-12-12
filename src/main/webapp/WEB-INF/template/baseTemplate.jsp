@@ -6,11 +6,11 @@
 
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<html>
+<html lang="en" data-framework="angularjs">
 	<head>
 		<tiles:insertAttribute name="head" />
 	</head>
-	<body>
+	<body ng-app="todomvc">
 		<tiles:insertAttribute name="nav" />
 		<div class="container-fluid" id="container">
 			<div class="row" id="body">
