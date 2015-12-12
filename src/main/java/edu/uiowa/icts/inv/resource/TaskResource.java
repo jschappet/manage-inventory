@@ -82,13 +82,15 @@ public class TaskResource extends AbstractInvApiResource {
 		log.debug("Starting to complete Task: '" + taskId + "'");
 		try {
 			task = invDaoService.getTaskService().findById(taskId);
+			log.debug("Task TaskType: " + task.getTaskType());
+			
 		} catch (Exception e) {
+			log.debug("starting catch");
 			log.error("Error finding TaskId: " + taskId, e);
 			throw new EntityNotFoundException();
 
 		}
 
-		log.debug("Task TaskType: " + task.getTaskType());
 		try {
 
 			WorkLog wl = WorkLogManager.completeTask(task, getUsername(), "TO BE ADDED");

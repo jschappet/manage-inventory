@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/security 
+                        http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <global-method-security pre-post-annotations="enabled" />
+	
+	<http pattern="/resources/**" security="none" />
+    <http pattern="/favicon.ico" security="none" />
+    
+    <http use-expressions="true">
+    	<csrf disabled="true"/>
+    	<!-- <custom-filter ref="switchUserProcessingFilter" after="FILTER_SECURITY_INTERCEPTOR" /> -->
+		
+		<intercept-url pattern="/contact" access="permitAll" />
+		<intercept-url pattern="/faq" access="permitAll" />
+		<intercept-url pattern="/message" access="permitAll" />
+		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/forgotUsername" access="permitAll" />
+		<intercept-url pattern="/forgotPassword" access="permitAll" />
+		<intercept-url pattern="/questions" access="permitAll" />
+		<intercept-url pattern="/resetPassword" access="permitAll" />
+        <intercept-url pattern="/authenticator" access="permitAll" />
+        
+        <intercept-url pattern="/error" access="permitAll" />
+        
+        <intercept-url pattern="/index" access="permitAll" />
+        <intercept-url pattern="/index.jsp" access="permitAll" />
+        <intercept-url pattern="/" access="permitAll" />
+     
+		<intercept-url pattern="/**" access="permitAll" />
+		
+<!-- 		<intercept-url pattern="/inv/**" access="hasRole('ROLE_ADMIN')"/> -->
+		
+		
+		
+		<form-login login-page="/login" authentication-failure-url="/login?error=true"/>
+		<logout logout-url="/logout" logout-success-url="/" invalidate-session="true" />
+		
+		<remember-me data-source-ref="dataSource" token-validity-seconds="864000" key="schappet.com"/>
+		
+		<session-management session-fixation-protection="newSession">
+			<concurrency-control max-sessions="5" error-if-maximum-exceeded="false" />
+		</session-management>
+    </http>
+
+
+
+
+    <authentication-manager>
+                <authentication-provider>
+                        <password-encoder hash="md5" />
+                        <jdbc-user-service data-source-ref="dataSource"
+                        users-by-username-query="SELECT username, password, 'true' as enabled from inv.person where username=?"
+                        authorities-by-username-query="SELECT  username, role_name from inv.person join inv.person_role on person.person_id = person_role.person_id join inv.role on role.role_id = person_role.role_id where person.username = ? "
+                        />
+                </authentication-provider>
+
+
+
+
+    </authentication-manager>
+
+</beans:beans>
