@@ -47,6 +47,14 @@ public class TaskController extends AbstractInvController {
         model.addAttribute( "taskList", invDaoService.getTaskService().list() );
         return "/inv/task/list_alt";
     }
+    
+    
+    
+    @RequestMapping( value = "ng", method = RequestMethod.GET )
+    public String listAngular(Model model) {
+        //model.addAttribute( "taskList", invDaoService.getTaskService().list() );
+        return "/ng/task";
+    }
 
     @RequestMapping( value = { "list", "", "/" }, method = RequestMethod.GET )
     public String list( ModelMap model) {

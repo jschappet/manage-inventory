@@ -4,7 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+<meta charset="utf-8">
 <meta name="description" content="manage-inventory" />
 <meta name="keywords" content="manage-inventory" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
 
 <link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico" />" type="image/x-icon" /> --%>
 
-<title>${ pageTitle }<c:if test="${ not empty pageTitle }"> : </c:if>manage-inventory</title>
+<title>${ pageTitle }<c:if test="${ not empty pageTitle }"> : </c:if>Manage Inventory</title>
 
 <!-- jquery -->
 <script type="text/javascript" src="<c:url value="/resources/jquery/dist/jquery.min.js"/>"></script>
@@ -39,6 +39,7 @@
 <script type="text/javascript" src="<c:url value="/resources/angular/angular.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/angular-ui-grid/ui-grid.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/resources/angular-resource/angular-resource.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/angular-route/angular-route.min.js" />"></script>
 <link type="text/css" media="screen" rel="stylesheet" href="<c:url value="/resources/angular-ui-grid/ui-grid.min.css"/>" />
 
 <!-- D3 stuff -->

@@ -33,7 +33,7 @@
         <intercept-url pattern="/index.jsp" access="permitAll" />
         <intercept-url pattern="/" access="permitAll" />
      
-		<intercept-url pattern="/**" access="isAuthenticated()" />
+		<intercept-url pattern="/**" access="permitAll" />
 		
 <!-- 		<intercept-url pattern="/inv/**" access="hasRole('ROLE_ADMIN')"/> -->
 		
